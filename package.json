@@ -3,18 +3,35 @@
   "version": "0.0.0",
   "description": "Docz plugin that makes migrating from Storybook a breeze.",
   "author": "Hydrate <dev@hydrate.io> (https://hydrate.io)",
+  "repository": "hydrateio/docz-plugin-storybook",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "engines": {
-    "node": ">=6"
+    "node": ">=8",
+    "yarn": ">=1.5.0"
   },
+  "keywords": [
+    "docz",
+    "storybook",
+    "react",
+    "reactjs",
+    "plugin",
+    "mdx"
+  ],
   "scripts": {
+    "prebuild": "yarn run clean",
+    "build": "babel src -d dist",
+    "clean": "del dist",
     "test": "eslint ."
   },
   "dependencies": {
     "docz-core": "^0.12.5"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "ava": "^0.25.0",
+    "del-cli": "^1.1.0",
     "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.14.0",

@@ -16,7 +16,9 @@ This module requires `node >= 8`.
 npm install --save-dev docz-plugin-storybook
 ```
 
-Then add the plugin to your `doczrc.js`:
+## Usage
+
+Add the plugin to your `doczrc.js`:
 
 ```js
 // doczrc.js
