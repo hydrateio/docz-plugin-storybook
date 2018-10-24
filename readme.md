@@ -8,6 +8,13 @@
 
 This module is an active WIP. [Hic Draconis](https://en.wikipedia.org/wiki/Here_be_dragons)
 
+Steps:
+
+- [x] alias `@storybook/react` to custom shim
+- [ ] add one virtual mdx file for each source storybook file
+- [ ] test with basic storybook fixtures
+- [ ] example [project](https://github.com/hydrateio/storybook-to-docz) that showcases the storybook to docz conversion
+
 ## Install
 
 This module requires `node >= 8`.
