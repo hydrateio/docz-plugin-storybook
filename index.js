@@ -1,6 +1,6 @@
 import { createPlugin } from 'docz-core'
 
-export const myPlugin = () =>
+export const storybook = () =>
   createPlugin({
     setConfig: config => {
       /* ... */
