@@ -1,0 +1,10 @@
+{
+  "name": "docz-plugin-storybook",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Scott Silvi <scott@hydrate.io>",
+  "license": "MIT",
+  "dependencies": {
+    "docz-core": "^0.12.5"
+  }
+}
