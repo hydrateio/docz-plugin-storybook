@@ -11,7 +11,9 @@
     "test": "eslint ."
   },
   "dependencies": {
-    "docz-core": "^0.12.5",
+    "docz-core": "^0.12.5"
+  },
+  "devDependencies": {
     "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
