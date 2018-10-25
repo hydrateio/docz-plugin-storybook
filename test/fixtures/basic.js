@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf } from '../../src/storybook-react-client-shim'
+import { storiesOf } from '../../src/shim'
 import Button from './Button'
 
 storiesOf('Button', module)

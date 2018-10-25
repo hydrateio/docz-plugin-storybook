@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "docz-core": "^0.12.5",
-    "ensure-array": "^1.0.0",
     "globby": "^8.0.1"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer'
-import { getStorybook } from '../src/storybook-react-client-shim'
+import { getStorybook } from '../src/shim'
 
 describe('Storybook Shim', () => {
   describe('against Basic Fixture', () => {
@@ -7,8 +7,10 @@ describe('Storybook Shim', () => {
 
     beforeAll(() => {
       require('./fixtures/basic')
-      ;[ButtonStory] = getStorybook()
-      ;[story1, story2] = ButtonStory.stories
+      const storyBook = getStorybook()
+      ButtonStory = storyBook[0]
+      story1 = ButtonStory.stories[0]
+      story2 = ButtonStory.stories[1]
     })
 
     it('should transform the storybook to an object', () => {
