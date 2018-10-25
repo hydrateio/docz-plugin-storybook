@@ -1,15 +1,14 @@
 import { createPlugin } from 'docz-core'
 import ensureArray from 'ensure-array'
-import fs from 'fs'
 import path from 'path'
 import paths from './paths'
 
 export const storybook = (opts = { }) => {
-  /*
   const {
-    // TODO: plugin config options
+    configDir = paths.storybook.configDir
   } = opts
-  */
+
+  const storybookConfigPath = path.rseolve(configDir, paths.config)
 
   return createPlugin({
     setConfig: (config) => {
@@ -20,14 +19,17 @@ export const storybook = (opts = { }) => {
 
       // TODO: docz will only transpile files from src/* so our temp mdx needs to exist
       // somewhere in the source tree (not temp), possibly in .docz/storybook
-      const testMDX = path.join(paths.temp, 'test.mdx')
-      fs.writeFileSync(testMDX, `
-import '${paths.storybook.config}'
-`)
+      // const testMDX = path.join(paths.temp, 'test.mdx')
+      // fs.writeFileSync(testMDX, `import '${paths.storybook.config}'`)
 
-      config.files = ensureArray(config.files).concat([
-        path.join(paths.temp, '*.mdx')
-      ])
+      // config.files = ensureArray(config.files).concat([
+      //   path.join(paths.temp, '*.mdx')
+      // ])
+
+      console.log(JSON.stringify(config, null, 2))
+      config.entry = [
+        storybookConfigPath
+      ].concat(ensureArray(config.entry))
     },
 
     modifyBundlerConfig: (config, dev) => {

@@ -7,9 +7,9 @@ export const resolveApp = (to) => path.resolve(root, to)
 export const docz = resolveApp('.docz')
 export const temp = path.resolve(docz, 'storybook/')
 
-const storybookRoot = resolveApp('.storybook')
+const storybookConfigDir = resolveApp('.storybook')
 
 export const storybook = {
-  root: storybookRoot,
-  config: path.resolve(storybookRoot, 'config.js')
+  configDir: storybookConfigDir,
+  config: 'config.js'
 }
