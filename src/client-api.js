@@ -7,6 +7,10 @@ export default class ClientAPI {
     this._globalParameters = {}
   }
 
+  get store () {
+    return this._storyStore
+  }
+
   setAddon = (addon) => {
     this._addons = {
       ...this._addons,

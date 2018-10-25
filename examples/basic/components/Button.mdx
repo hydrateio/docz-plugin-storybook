@@ -1,11 +1,14 @@
 ---
 name: Button
 ---
+
 import Button from './Button'
+import { Story } from 'docz-plugin-storybook/react'
 
 # Button
 
 ## Button with Text
+
 <Button>Hello Button</Button>
 
 ## Button with Emoji
@@ -14,3 +17,13 @@ import Button from './Button'
     😀 😎 👍 💯
   </span>
 </Button>
+
+---
+
+## Story with text
+
+<Story kind='Button' name='with text' />
+
+## Story with some emoji
+
+<Story kind='Button' name='with some emoji' />

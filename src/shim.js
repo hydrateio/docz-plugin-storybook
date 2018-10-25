@@ -20,3 +20,6 @@ export const configure = (loaders, module) => {
     setTimeout(() => loaders())
   }
 }
+
+// additional, private exports
+export const _clientAPI = clientAPI

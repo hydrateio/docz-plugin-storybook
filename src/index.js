@@ -2,13 +2,16 @@ import { createPlugin } from 'docz-core'
 import * as path from 'path'
 import paths from './paths'
 
-export const storybook = (opts = {}) => {
-  const { configDir = paths.storybook.configDir } = opts
+export const storybook = (opts = { }) => {
+  const {
+    // these options are intended to mimic the storybook cli options
+    configDir = paths.storybook.configDir
+  } = opts
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
 
   return createPlugin({
-    setConfig: config => {
+    setConfig: (config) => {
       // TODO: since we're only given an entrypoint .storybook/config.js with a configure
       // call to load stories on the client, we won't know which mdx files to create so
       // we may have to inject entries dynamically on the client as part of the 'configure'
@@ -39,10 +42,7 @@ export const storybook = (opts = {}) => {
 
       config.resolve = config.resolve || {}
       config.resolve.alias = config.resolve.alias || {}
-      config.resolve.alias['@storybook/react'] = path.resolve(
-        __dirname,
-        './shim'
-      )
+      config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
 
       console.log('webpack')
       console.log('-'.repeat(80))
