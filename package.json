@@ -21,6 +21,9 @@
   "scripts": {
     "prebuild": "yarn run clean",
     "build": "babel src -d dist",
+    "prestart": "yarn run clean",
+    "start": "babel src -w -d dist",
+    "dev": "yarn run start",
     "clean": "del dist",
     "test": "eslint ."
   },

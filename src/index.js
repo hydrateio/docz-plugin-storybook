@@ -1,6 +1,6 @@
 import { createPlugin } from 'docz-core'
 import ensureArray from 'ensure-array'
-import path from 'path'
+import * as path from 'path'
 import paths from './paths'
 
 export const storybook = (opts = { }) => {
@@ -8,7 +8,7 @@ export const storybook = (opts = { }) => {
     configDir = paths.storybook.configDir
   } = opts
 
-  const storybookConfigPath = path.rseolve(configDir, paths.config)
+  const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
 
   return createPlugin({
     setConfig: (config) => {
@@ -26,16 +26,31 @@ export const storybook = (opts = { }) => {
       //   path.join(paths.temp, '*.mdx')
       // ])
 
+      /*
+      console.log('docz config')
+      console.log('-'.repeat(80))
       console.log(JSON.stringify(config, null, 2))
-      config.entry = [
-        storybookConfigPath
-      ].concat(ensureArray(config.entry))
+      console.log()
+      console.log()
+      */
+
+      return config
     },
 
     modifyBundlerConfig: (config, dev) => {
+      config.entry.storybook = storybookConfigPath
+
       config.resolve = config.resolve || { }
       config.resolve.alias = config.resolve.alias || { }
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
+
+      console.log('webpack')
+      console.log('-'.repeat(80))
+      console.log(JSON.stringify(config, null, 2))
+      console.log()
+      console.log()
+
+      return config
     }
   })
 }

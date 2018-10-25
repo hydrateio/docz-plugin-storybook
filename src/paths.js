@@ -1,15 +1,23 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-export const root = fs.realpathSync(process.cwd())
-export const resolveApp = (to) => path.resolve(root, to)
+const root = fs.realpathSync(process.cwd())
+const resolveApp = (to) => path.resolve(root, to)
 
-export const docz = resolveApp('.docz')
-export const temp = path.resolve(docz, 'storybook/')
+const docz = resolveApp('.docz')
+const temp = path.resolve(docz, 'storybook/')
 
 const storybookConfigDir = resolveApp('.storybook')
 
-export const storybook = {
+const storybook = {
   configDir: storybookConfigDir,
   config: 'config.js'
+}
+
+export default {
+  root,
+  resolveApp,
+  docz,
+  temp,
+  storybook
 }
