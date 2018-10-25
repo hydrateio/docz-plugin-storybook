@@ -1,0 +1,24 @@
+{
+  "name": "basic-docz-plugin-storybook-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-storybook": "build-storybook -c .storybook -o ./dist/storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@storybook/react": "^3.4.11",
+    "babel-core": "^6.26.3",
+    "docz": "^0.12.5",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-virtualized": "^9.21.0"
+  }
+}
