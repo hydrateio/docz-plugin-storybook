@@ -2,6 +2,7 @@ import ClientAPI from './client-api'
 
 const clientAPI = new ClientAPI()
 
+// mock the minimal set of exports from `@storybook/react`
 export const storiesOf = clientAPI.storiesOf
 export const setAddon = clientAPI.setAddon
 export const addDecorator = clientAPI.addDecorator

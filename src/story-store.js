@@ -25,7 +25,7 @@ export default class StoryStore {
         kind,
         fileName: parameters.fileName,
         index: getId(),
-        stories: {},
+        stories: {}
       }
     }
 
@@ -33,7 +33,7 @@ export default class StoryStore {
       name,
       index: getId(),
       fn,
-      parameters,
+      parameters
     }
   }
 
@@ -79,7 +79,7 @@ export default class StoryStore {
     const { fn, parameters } = storyInfo
     return {
       story: fn,
-      parameters,
+      parameters
     }
   }
 
@@ -99,7 +99,7 @@ export default class StoryStore {
       story({
         kind,
         story: name,
-        parameters,
+        parameters
       })
   }
 
@@ -120,7 +120,7 @@ export default class StoryStore {
   dumpStoryBook() {
     const data = this.getStoryKinds().map(kind => ({
       kind,
-      stories: this.getStories(kind),
+      stories: this.getStories(kind)
     }))
 
     return data
