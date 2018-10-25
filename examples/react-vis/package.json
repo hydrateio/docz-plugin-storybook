@@ -1,7 +1,10 @@
 {
-  "name": "storybook-to-docz",
-  "version": "0.0.1",
+  "name": "docz-plugin-storybook-example-react-vis",
+  "private": true,
+  "version": "0.0.0",
   "description": "Convert Storybook stories to mdx files for consumption within docz",
+  "author": "dev@hydrate.io",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "build-storybook": "build-storybook -c .storybook -o ./dist/storybook",
@@ -10,17 +13,7 @@
     "docz:build": "docz build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hydrateio/storybook-to-docz.git"
-  },
   "keywords": [],
-  "author": "dev@hydrate.io",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hydrateio/storybook-to-docz/issues"
-  },
-  "homepage": "https://github.com/hydrateio/storybook-to-docz#readme",
   "dependencies": {
     "react-vis": "^1.11.4"
   },
@@ -29,7 +22,7 @@
     "@storybook/react": "^3.4.11",
     "babel-core": "^6.26.3",
     "docz": "^0.12.5",
-    "docz-plugin-storybook": "link:../../",
+    "docz-plugin-storybook": "link:../..",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-virtualized": "^9.21.0"
