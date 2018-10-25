@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storybook Shim against Basic Fixture should match story snapshots 1`] = `
+<button>
+  Hello Button
+</button>
+`;
+
+exports[`Storybook Shim against Basic Fixture should match story snapshots 2`] = `
+<button>
+  <span
+    aria-label="so cool"
+    role="img"
+  >
+    😀 😎 👍 💯
+  </span>
+</button>
+`;

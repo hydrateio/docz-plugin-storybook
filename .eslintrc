@@ -1,6 +1,12 @@
 {
-  "extends": ["standard"],
+  "extends": ["plugin:react/recommended", "standard"],
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
+  },
+  "parser": "babel-eslint",
   "rules": {
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    "comma-dangle": 0
   }
 }
