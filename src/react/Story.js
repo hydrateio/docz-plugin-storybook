@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { _clientAPI } from '../shim'
 
-export default class Story extends PureComponent {
+export default class Story extends Component {
   static propTypes = {
     kind: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
@@ -17,6 +17,13 @@ export default class Story extends PureComponent {
     } = this.props
 
     const story = _clientAPI.store.getStoryWithContext(kind, name)
+
+    if (!story) {
+      console.error('unable to find story', { kind, name })
+      return (
+        <div />
+      )
+    }
 
     console.log(story)
 
