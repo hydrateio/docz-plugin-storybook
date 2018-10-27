@@ -25,7 +25,7 @@ Given the popularity of these two projects, we wanted to provide a simple bridge
 - automatically populate Docz with all of your stories
 - simple to use Docz alongside Storybook
 - no need to replace Storybook or force devs to change their habits
-- **the best of both worlds - Storybook :heart: Docz**
+- **the best of both worlds - Docz :heart: Storybook
 
 ## Install
 
