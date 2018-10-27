@@ -1,6 +1,8 @@
 import ClientAPI from './client-api'
 
-const clientAPI = new ClientAPI()
+const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
+const clientAPI = window[globalHook] || new ClientAPI()
+window[globalHook] = clientAPI
 
 // mock the minimal set of exports from `@storybook/react`
 export const storiesOf = clientAPI.storiesOf
@@ -16,8 +18,7 @@ export const configure = (loaders, module) => {
   if (loaders) {
     // load all stories into the client API via one or more imperative commonjs
     // 'require' trees
-    // TODO: is this setTimeout necessary?
-    setTimeout(() => loaders())
+    loaders()
   }
 }
 

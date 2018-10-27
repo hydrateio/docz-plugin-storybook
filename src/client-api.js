@@ -50,7 +50,7 @@ export default class ClientAPI {
 
     let localParameters = {}
     const api = {
-      kind,
+      kind
     }
 
     // apply addons
@@ -102,6 +102,8 @@ export default class ClientAPI {
         getStory,
         allParam
       )
+
+      console.log('add', kind, storyName)
       return api
     }
 

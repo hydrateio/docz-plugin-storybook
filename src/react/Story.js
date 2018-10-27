@@ -25,8 +25,6 @@ export default class Story extends Component {
       )
     }
 
-    console.log(story)
-
     return (
       <div
         {...rest}
