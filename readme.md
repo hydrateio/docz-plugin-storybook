@@ -12,11 +12,11 @@ This plugin allows you to take any existing Storybook project and effortlessly v
 
 Storybook's pretty great. Writing "stories" at the component level is a very powerful abstraction, and it has benefitted from enormous popularity within the React, Vue, and Angular communities.
 
-Storybook does have some flaws, however; the docs generally provide a great developer experience but are not really ideal for publishing a design system targeting designers or other business stakeholders. Storybook sites also tend to look pretty meh and you can't currently use MDX, a transformative technology that makes writing documentation *in addition to* component demos extremely fast and concise.
+Storybook does have some flaws, however; the docs generally provide a great developer experience but are not ideal for design systems targeting designers or other business stakeholders. Storybook sites also tend to look pretty meh and you can't currently use MDX, a transformative technology that makes writing documentation *in addition to* component demos extremely fast and concise.
 
 This is where [Docz](https://www.docz.site) comes in -- it's already a really popular project that allows developers to write better component docs faster.
 
-Given the popularity of these two projects, we wanted to provide a simple bridge which allows you to use **existing Storybook stories from within Docz** just by installing a simple plugin**. The best of both worlds!**
+Given the popularity of these two projects, we wanted to provide a simple bridge which allows you to use **existing Storybook stories from within Docz** just by installing a simple plugin.
 
 ## Features
 
@@ -25,7 +25,7 @@ Given the popularity of these two projects, we wanted to provide a simple bridge
 - automatically populates Docz's contents with existing stories
 - simple to use Docz alongside Storybook
 - no need to replace Storybook or force devs to change their processes
-- **the best of both worlds: Storybook :heart: Docz**
+- **the best of both worlds - Storybook :heart: Docz**
 
 ## Install
 
@@ -39,7 +39,7 @@ npm install --save-dev docz docz-plugin-storybook
 
 Let's say you have a Storyboook project.
 
-1. Add docz to your project following the normal `docz` [getting started guide]().
+1. Add docz to your project following the normal `docz` [getting started guide](https://www.docz.site/introduction/getting-started). You should now have blank docz docs alongside your existing storybook docs.
 
 2. Add the plugin to your `doczrc.js`
 
@@ -54,7 +54,7 @@ export default {
 }
 ```
 
-3. Start docz and view all your existing stories that've been magically imported -- complete with all the hot reloading and mdx goodness that Docz such a great developer experience!
+3. Start docz and view all your existing stories that've been automatically imported -- complete with all the hot reloading and mdx goodness that makes Docz so great!
 
 #### Manual Rendering
 
@@ -96,9 +96,10 @@ This will render all the stories that have been defined for the `Button` compone
 <Stories kind='Button' />
 ```
 
-Which will display stories loaded from this example Storybook file:
+This would display all of the stories loaded from this example Storybook file:
 
 ```jsx
+// button-story.js
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Button from '../components/Button'
@@ -116,9 +117,9 @@ storiesOf('Button', module)
   ))
 ```
 
-Note that `button-story.js` can exist anywhere in your source as long as it's loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
+Note that source files containing your stories can exist anywhere in your source as long as it's loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
 
-Also note that these stories are loaded an found automagically by the plugin :whoa:
+Also note that these stories are loaded and exposed automagically by the plugin 🤯
 
 ## How does it work?
 
