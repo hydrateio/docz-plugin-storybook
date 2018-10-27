@@ -117,9 +117,9 @@ storiesOf('Button', module)
   ))
 ```
 
-Note that source files containing your stories can exist anywhere in your source as long as it's loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
+Note that source files containing your stories can exist anywhere in your source as long as they're loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
 
-Also note that these stories are loaded and exposed automagically by the plugin 🤯
+Also note that these stories are loaded and exposed automagically by the plugin! 🤯
 
 ## How does it work?
 
