@@ -37,7 +37,7 @@ npm install --save-dev docz docz-plugin-storybook
 
 ## Usage
 
-Let's say you have a Storyboook project.
+Let's start with an existing project that uses Storybook.
 
 1. Add docz to your project following the normal `docz` [getting started guide](https://www.docz.site/introduction/getting-started). You should now have blank docz docs alongside your existing storybook docs.
 
