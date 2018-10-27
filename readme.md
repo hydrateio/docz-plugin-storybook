@@ -16,7 +16,7 @@ Storybook does, however, have some flaws. The docs generally provide a great dev
 
 This is where [Docz](https://www.docz.site) comes in -- it's already a really popular project that allows developers to write better component docs faster.
 
-Given the popularity of these two projects, we wanted to provide a simple bridge which allows you to use **existing Storybook stories from within Docz** just by installing a plugin.
+Given the popularity of these two projects, we wanted to provide a simple bridge which allows you to **use existing Storybook stories from within Docz** just by installing a plugin.
 
 ## Features
 
