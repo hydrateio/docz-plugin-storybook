@@ -20,10 +20,11 @@ Given the popularity of these two projects, we wanted to provide a simple bridge
 
 ## Features
 
-- import and render existing stories in Docz mdx
+- import and render existing stories in Docz
 - zero config - **it just works** for 99% of existing Storybooks
-- automatically populates Docz's contents with existing stories
-- simple to use Docz alongside Storybook
+- automatically populate Docz with existing stories
+- manual override to give you more control over how your stories are rendered in Docz
+- makss it simple to use Docz alongside Storybook
 - no need to replace Storybook or force devs to change their processes
 - **the best of both worlds - Storybook :heart: Docz**
 
