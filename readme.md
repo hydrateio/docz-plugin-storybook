@@ -21,7 +21,7 @@ Given the popularity of these two projects, we wanted to provide a simple bridge
 ## Features
 
 - import and render existing stories in Docz
-- zero config - **it just works** for 99% of existing Storybooks
+- zero config - **it just works** for 99% of Storybooks
 - automatically populate Docz with all of your stories
 - simple to use Docz alongside Storybook
 - no need to replace Storybook or force devs to change their habits
