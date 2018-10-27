@@ -29,7 +29,7 @@ Given the popularity of these two projects, we wanted to provide a simple bridge
 
 ## Install
 
-This module requires `node >= 8`.
+This module requires `node >= 6`.
 
 ```bash
 npm install --save-dev docz docz-plugin-storybook

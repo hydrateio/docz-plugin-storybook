@@ -7,8 +7,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=8",
-    "yarn": ">=1.5.0"
+    "node": ">=6"
   },
   "keywords": [
     "docz",

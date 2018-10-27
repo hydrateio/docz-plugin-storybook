@@ -44,8 +44,6 @@ export const storybook = (opts = { }) => {
       config.resolve.alias = config.resolve.alias || {}
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
 
-      // config.devtool = 'eval-source-map'
-
       console.log('webpack')
       console.log('-'.repeat(80))
       console.log(JSON.stringify(config, null, 2))
