@@ -129,7 +129,7 @@ This plugin performs its magic with a few key steps:
 2. Alias `@storybook/react` to a minimal shim that replaces Storybook's built-in UX with logic to aggregate story metadata as their `storiesOf` and `.add` are called. This shim matches `@storybook/react`'s public exports exactly, so any existing Storybook code will continue to work.
 3. Docz's client-side code executes which initializes our store of all stories.
 4. In the case of automatic rendering, we take all of the aggregated stories and add them to Docz's contents which have so far been populated via server-side MDX parsing.
-5. In the case of manual rendering, whenever a `Story` or multiple `Stories` are rendered, these components look up the target stories in our story store and invoke their renderer which is normal React that plays well with mdx.
+5. In the case of manual rendering, whenever a `Story` or multiple `Stories` are rendered, these components look up the target stories in our shim's store and invoke their renderer which produces a normal React subtree.
 6. Profit!
 
 ## Status
