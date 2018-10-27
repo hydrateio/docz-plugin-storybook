@@ -1,12 +1,17 @@
 {
+  "parser": "babel-eslint",
   "extends": ["plugin:react/recommended", "standard"],
   "plugins": ["jest"],
   "env": {
     "jest/globals": true
   },
-  "parser": "babel-eslint",
   "rules": {
     "space-before-function-paren": 0,
     "comma-dangle": 0
+  },
+  "settings": {
+    "react": {
+      "version": "16.6.0"
+    }
   }
 }

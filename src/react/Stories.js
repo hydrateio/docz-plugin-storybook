@@ -19,7 +19,7 @@ export default class Stories extends Component {
     const names = _clientAPI.store.getStories(kind)
 
     if (!names) {
-      console.error('unable to find story', { kind, name })
+      console.error('unable to find story', { kind })
       return (
         <div />
       )
