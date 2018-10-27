@@ -13,10 +13,10 @@ Steps:
 - [x] create a minimal shim for `@storybook/react` focused on aggregating story metadata
 - [x] alias `@storybook/react` to our custom shim
 - [x] add docz webpack entry for loading stories client-side into our custom shim
-- [x] support manual story rendering via docz mdx files
 - [x] `Story` react component
 - [ ] `Stories` react component
-- [ ] add plugin option to automatically insert one virtual mdx entry for each story "kind"
+- [x] support explicit story rendering via docz mdx files
+- [ ] support implicit / automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
 - [ ] add docz webpack support for other loaders that storybook contains by default
 - [ ] add support for custom storybook webpack configs
 - [ ] add support for most popular storybook addons
