@@ -17,7 +17,7 @@ Steps:
 - [ ] `Stories` react component
 - [x] support explicit story rendering via docz mdx files
 - [ ] support implicit / automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
-- [ ] add docz webpack support for other loaders that storybook contains by default
+- [ ] add docz webpack support for other loaders that storybook contains by default (eg, css)
 - [ ] add support for custom storybook webpack configs
 - [ ] add support for most popular storybook addons
 - [ ] integration tests with various storybook fixtures
