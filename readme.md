@@ -12,11 +12,11 @@ This plugin allows you to take any existing Storybook project and effortlessly v
 
 Storybook's pretty great. Writing "stories" at the component level is a very powerful abstraction, and it has benefitted from enormous popularity within the React, Vue, and Angular communities.
 
-Storybook does have some flaws, however; the docs generally provide a great developer experience but are not ideal for design systems targeting designers or other business stakeholders. Storybook sites also tend to look pretty meh and you can't currently use MDX, a transformative technology that makes writing documentation *in addition to* component demos extremely fast and concise.
+Storybook does, however, have some flaws. The docs generally provide a great developer experience but are not ideal for design systems targeting designers or other business stakeholders. Storybook sites also tend to look pretty boring and you can't currently use MDX, a transformative technology that makes writing documentation *in addition to* component demos extremely fast and concise.
 
 This is where [Docz](https://www.docz.site) comes in -- it's already a really popular project that allows developers to write better component docs faster.
 
-Given the popularity of these two projects, we wanted to provide a simple bridge which allows you to use **existing Storybook stories from within Docz** just by installing a simple plugin.
+Given the popularity of these two projects, we wanted to provide a simple bridge which allows you to use **existing Storybook stories from within Docz** just by installing a plugin.
 
 ## Features
 
