@@ -25,6 +25,8 @@ export default class Story extends Component {
       )
     }
 
+    // TODO: should we show the kind or name?
+
     return (
       <div
         {...rest}

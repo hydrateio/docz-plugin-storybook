@@ -10,10 +10,18 @@ This module is an active WIP. [Hic Draconis](https://en.wikipedia.org/wiki/Here_
 
 Steps:
 
-- [x] alias `@storybook/react` to custom shim
-- [ ] add one virtual mdx file for each source storybook file
-- [ ] test with basic storybook fixtures
-- [ ] example [project](https://github.com/hydrateio/storybook-to-docz) that showcases the storybook to docz conversion
+- [x] create a minimal shim for `@storybook/react` focused on aggregating story metadata
+- [x] alias `@storybook/react` to our custom shim
+- [x] add docz webpack entry for loading stories client-side into our custom shim
+- [x] support manual story rendering via docz mdx files
+- [x] `Story` react component
+- [ ] `Stories` react component
+- [ ] add plugin option to automatically insert one virtual mdx entry for each story "kind"
+- [ ] add docz webpack support for other loaders that storybook contains by default
+- [ ] add support for custom storybook webpack configs
+- [ ] add support for most popular storybook addons
+- [ ] integration tests with various storybook fixtures
+- [ ] example projects that showcase storybook to docz conversions
 
 ## Install
 
