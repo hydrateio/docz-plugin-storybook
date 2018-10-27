@@ -125,7 +125,7 @@ Also note that these stories are loaded and exposed automagically by the plugin!
 
 This plugin performs its magic with a few key steps:
 
-1. Add the storybook entrypoint as an additional webpack entry in Docz's config
+1. Add the storybook entrypoint as an additional webpack entry in Docz's config.
 2. Alias `@storybook/react` to a minimal shim that replaces Storybook's built-in UX with logic to aggregate story metadata as their `storiesOf` and `.add` are called. This shim matches `@storybook/react`'s public exports exactly, so any existing Storybook code will continue to work.
 3. Docz's client-side code executes which initializes our store of all stories.
 4. In the case of automatic rendering, we take all of the aggregated stories and add them to Docz's contents which have so far been populated via server-side MDX parsing.
