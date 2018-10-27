@@ -7,8 +7,7 @@ function getId() {
 
 export default class StoryStore {
   constructor() {
-    this._data = {}
-    this._revision = 0
+    this.clean()
   }
 
   getRevision() {
@@ -131,6 +130,7 @@ export default class StoryStore {
   }
 
   clean() {
-    this.getStoryKinds().forEach(kind => delete this._data[kind])
+    this._data = { }
+    this._revision = 0
   }
 }

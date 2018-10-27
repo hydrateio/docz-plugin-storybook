@@ -14,14 +14,18 @@ Steps:
 - [x] alias `@storybook/react` to our custom shim
 - [x] add docz webpack entry for loading stories client-side into our custom shim
 - [x] `Story` react component
-- [ ] `Stories` react component
+- [x] `Stories` react component
+- [ ] wrap `Story` in an iframe to mimic storybook environment as closely as possible
+- [ ] ensure `Story` is rerendered if story changes during hot reload
 - [x] support explicit story rendering via docz mdx files
 - [ ] support implicit / automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
 - [ ] add docz webpack support for other loaders that storybook contains by default (eg, css)
 - [ ] add support for custom storybook webpack configs
 - [ ] add support for most popular storybook addons
 - [ ] integration tests with various storybook fixtures
-- [ ] example projects that showcase storybook to docz conversions
+- [ ] example projects that showcase the storybook to docz conversion
+
+- [ ] would like a way to add a docz anchor and link to Stories children so each Story `<h2>` is linked in the primary nav
 
 ## Install
 
