@@ -60,7 +60,7 @@ export default {
 
 By default, `docz-plugin-storybook` adds all of your existing stories to Docz's navigation and page content so you get full docs, but if you'd like more fine-grained control, you can manually render stories from within any Docz `mdx` file.
 
-To set this up, you'll want to disable the default functionality when initializing the plugin by passing `{ manual: true }`:
+To set this up, you'll want to disable the default functionality when initializing the plugin by passing `{ manual: true }`.
 
 ```js
 // doczrc.js
@@ -83,15 +83,11 @@ name: Button
 
 import { Story, Stories } from 'docz-plugin-storybook/dist/react'
 
-You can augment your stories with any markdown or other components.
-
-## Story 'with text'
+## Render one Button story
 
 <Story kind='Button' name='with text' />
 
-## Stories
-
-This will render all the stories that have been defined for the `Button` component.
+## Render all Button stories
 
 <Stories kind='Button' />
 ```
@@ -106,7 +102,7 @@ import Button from '../components/Button'
 
 storiesOf('Button', module)
   .add('with text', () => (
-    <Button>Hello Button</Button>i
+    <Button>Hello Button</Button>
   ))
   .add('with some emoji', () => (
     <Button>
@@ -117,7 +113,7 @@ storiesOf('Button', module)
   ))
 ```
 
-Note that source files containing your stories can exist anywhere in your source as long as they're loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
+The source files containing your stories can exist anywhere in your source as long as they're loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
 
 Also note that these stories are loaded and exposed automagically by the plugin! 🤯
 
