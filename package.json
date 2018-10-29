@@ -31,7 +31,10 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
-    "docz-core": "^0.12.5"
+    "@sindresorhus/slugify": "^0.4.0",
+    "@storybook/core": "^3.4.11",
+    "docz-core": "^0.12.5",
+    "ensure-array": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -45,7 +48,7 @@
     "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.26.1",
+    "eslint-plugin-jest": "^21.26.2",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.11.1",
