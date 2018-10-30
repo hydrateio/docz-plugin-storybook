@@ -18,13 +18,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@storybook/react": "^3.4.11",
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.1.2",
+    "@storybook/react": "^4.0.0",
     "docz": "^0.12.5",
     "docz-plugin-storybook": "link:../..",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-virtualized": "^9.21.0"
+    "react-dom": "^16.6.0"
   }
 }
