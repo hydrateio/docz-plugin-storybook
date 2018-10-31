@@ -11,11 +11,5 @@ exports.webpackFinal = function (config) {
   // skip all the manager entries
   delete config.entry.manager
 
-  console.log('storybook webpack')
-  console.log('-'.repeat(80))
-  console.log(JSON.stringify(config, null, 2))
-  console.log()
-  console.log()
-
   return config
 }

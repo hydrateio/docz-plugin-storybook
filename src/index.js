@@ -9,15 +9,15 @@ export const storybook = (opts = { }) => {
     // these options are intended to mimic the storybook cli options
     configDir = paths.storybook.configDir,
     storyWrapper,
-    manual = false
+    autofill = true
   } = opts
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
   const storybookFiles = []
 
   return createPlugin({
-    setConfigPromise: async (config) => {
-      if (!manual) {
+    setConfig: async (config) => {
+      if (autofill) {
         const storybook = await buildStorybook({ configDir })
         console.log('storybook', JSON.stringify(storybook, null, 2))
 
@@ -46,16 +46,6 @@ ${stories.map(({ name }) => `
           return fs.writeFile(file, content)
         }))
       }
-
-      // config.files = ensureArray(config.files).concat([
-      //   path.join(paths.temp, '*.mdx')
-      // ])
-
-      console.log('docz config')
-      console.log('-'.repeat(80))
-      console.log(JSON.stringify(config, null, 2))
-      console.log()
-      console.log()
 
       return config
     },
