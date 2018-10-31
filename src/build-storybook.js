@@ -27,7 +27,7 @@ module.exports = async (opts = { }) => {
     ]
   })
 
-  console.log('storybook webpack success', outputDir)
+  // console.log('storybook webpack success', outputDir)
 
   // serve static bundle
   // -------------------
@@ -42,7 +42,6 @@ module.exports = async (opts = { }) => {
   const baseUrl = `http://localhost:${port}`
   await new Promise((resolve, reject) => {
     server.listen(port, () => {
-      console.log(`Running at ${baseUrl}`)
       resolve()
     })
   })
@@ -53,14 +52,11 @@ module.exports = async (opts = { }) => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 
-  // TODO: temp
-  // page.on('console', (message) => {
-  //   console.log(message)
-  // })
-
   await page.goto(`${baseUrl}/iframe.html`)
   const storybook = await page.evaluate(() => {
     const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
+
+    // TODO: if this hook doesn't exist, user needs to upgrade @storybook/react
     return window[globalHook].getStorybook()
   })
 
