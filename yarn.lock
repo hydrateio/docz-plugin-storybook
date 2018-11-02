@@ -7300,6 +7300,10 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-shadow@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-shadow/-/react-shadow-16.3.1.tgz#fcdb0e3d414cf09035d58156a895d11b57d3f19f"
+
 react-test-renderer@^16.6.0:
   version "16.6.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.6.0.tgz#fe490096bed55c3f4e92c023da3b89f9d03fceb3"

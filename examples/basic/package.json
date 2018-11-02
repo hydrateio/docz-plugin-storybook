@@ -25,6 +25,7 @@
     "docz-plugin-storybook": "link:../..",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-virtualized": "^9.21.0"
+    "react-virtualized": "^9.21.0",
+    "styled-components": "^4.0.3"
   }
 }
