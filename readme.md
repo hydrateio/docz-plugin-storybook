@@ -123,8 +123,8 @@ This plugin performs its magic with a few key steps:
 
 1. Add the storybook entrypoint as an additional webpack entry in Docz's config.
 2. Alias `@storybook/react` to a minimal shim that replaces Storybook's built-in UX with logic to aggregate story metadata as their `storiesOf` and `.add` are called. This shim matches `@storybook/react`'s public exports exactly, so any existing Storybook code will continue to work.
-3. Docz's client-side code executes which initializes our store of all stories.
-4. In the case of automatic rendering, we take all of the aggregated stories and add them to Docz's contents which have so far been populated via server-side MDX parsing.
+3. Docz's client-side code executes which initializes our all of the stories.
+4. In the case of automatic rendering, we take all of the aggregated stories and add them to Docz's contents via mdx files in `.docz/storybook/`.
 5. In the case of manual rendering, whenever a `Story` or multiple `Stories` are rendered, these components look up the target stories in our shim's store and invoke their renderer which produces a normal React subtree.
 6. Profit!
 
@@ -139,10 +139,10 @@ This module is stable but some Storybook addons and webpack customizations will 
 - [x] add docz webpack entry for loading stories client-side into our custom shim
 - [x] `Story` react component
 - [x] `Stories` react component
-- [ ] wrap `Story` in an iframe to mimic storybook environment as closely as possible
+- [ ] allow custom `Story` wrapper for iframes or shadow dom isolation
 - [ ] ensure `Story` is rerendered if its story changes during hot reload
-- [x] support explicit / manual story rendering within docz mdx files
-- [ ] support implicit / automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
+- [x] support manual story rendering within docz mdx files
+- [ ] support automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
 - [ ] add docz webpack support for other loaders that storybook contains by default (eg, css)
 - [ ] add support for custom storybook webpack configs
 - [ ] add support for most popular storybook addons
