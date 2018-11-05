@@ -5,7 +5,8 @@ import paths from './paths'
 export const storybook = (opts = { }) => {
   const {
     // these options are intended to mimic the storybook cli options
-    configDir = paths.storybook.configDir
+    configDir = paths.storybook.configDir,
+    storyWrapper
   } = opts
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
@@ -43,6 +44,9 @@ export const storybook = (opts = { }) => {
       config.resolve = config.resolve || {}
       config.resolve.alias = config.resolve.alias || {}
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
+
+      // create a wrapper around each component for isolation and surface it as docz-plugin-storybook/wrapper
+      config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper || './default-wrapper')
 
       console.log('webpack')
       console.log('-'.repeat(80))

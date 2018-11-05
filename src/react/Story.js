@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import StoryWrapper from 'docz-plugin-storybook/story-wrapper'
 
 import { _clientAPI } from '../shim'
 
@@ -26,13 +27,6 @@ export default class Story extends Component {
     }
 
     // TODO: should we show the kind or name?
-
-    return (
-      <div
-        {...rest}
-      >
-        {story()}
-      </div>
-    )
+    return <StoryWrapper {...rest}>{story()}</StoryWrapper>
   }
 }

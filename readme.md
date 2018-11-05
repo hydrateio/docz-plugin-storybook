@@ -128,6 +128,39 @@ This plugin performs its magic with a few key steps:
 5. In the case of manual rendering, whenever a `Story` or multiple `Stories` are rendered, these components look up the target stories in our shim's store and invoke their renderer which produces a normal React subtree.
 6. Profit!
 
+## But my stories don't look right...
+
+We have a solution for this. By passing in a wrapper to the storybook config we give you the option to render your story in isolation if you so choose. Here are the steps to render each story to an iframe.
+
+1. Create a story wrapper component.
+2. Pass in the path to the wrapper in the storybook config.
+
+```js
+// story-wrapper.js
+import Frame from 'react-frame-component'
+
+export default ({ children, style = {}, ...rest }) => (
+  <Frame
+    style={{
+      width: 320,
+      ...style
+    }}
+    {...rest}
+  >
+    {children}
+  </Frame>
+)
+```
+
+```js
+// doczrc.js
+import { storybook } from 'docz-plugin-storybook'
+
+export default {
+  plugins: [storybook({ storyWrapper: './story-wrapper' })]
+}
+```
+
 ## Status
 
 This module is stable but some Storybook addons and webpack customizations will take extra steps to get working from within Docz.
@@ -139,7 +172,7 @@ This module is stable but some Storybook addons and webpack customizations will 
 - [x] add docz webpack entry for loading stories client-side into our custom shim
 - [x] `Story` react component
 - [x] `Stories` react component
-- [ ] wrap `Story` in an iframe to mimic storybook environment as closely as possible
+- [x] wrap `Story` in an iframe to mimic storybook environment as closely as possible
 - [ ] ensure `Story` is rerendered if its story changes during hot reload
 - [x] support explicit / manual story rendering within docz mdx files
 - [ ] support implicit / automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
@@ -149,6 +182,7 @@ This module is stable but some Storybook addons and webpack customizations will 
 - [ ] integration tests with various storybook fixtures
 - [ ] example projects that showcase the storybook to docz conversion
 - [ ] would like a way to add a docz anchor and link to Stories children so each Story `<h2>` is linked in the primary nav
+- [ ] add wrapper examples using styled-components and react-shadow
 
 ## Related
 
