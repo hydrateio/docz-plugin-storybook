@@ -10,7 +10,7 @@ This plugin allows you to take any existing Storybook project and effortlessly v
 
 #### Why?
 
-Storybook's pretty great. Writing "stories" at the component level is a very powerful abstraction, and it has benefitted from enormous popularity within the React, Vue, and Angular communities.
+Storybook's pretty great. Writing "stories" at the component level is a very powerful abstraction, and it has benefitted from enormous popularity within the React community.
 
 Storybook does, however, have some flaws. The docs generally provide a great developer experience but are not ideal for design systems targeting designers or other business stakeholders. Storybook sites also tend to look pretty boring and you can't currently use MDX, a transformative technology that makes writing documentation *in addition to* component demos extremely fast and concise.
 
@@ -54,10 +54,11 @@ export default {
 }
 ```
 
-3. Start docz and view all your existing stories that've been automatically imported -- complete with all the hot reloading and mdx goodness that makes Docz so great!
+3. ~~Start docz and view all your existing stories that've been automatically imported -- complete with all the hot reloading and mdx goodness that makes Docz so great!~~ Once #7 is resolved, all of your stories will automatically be populated within Docz. Until then, you'll need to manually render your stories within mdx files as the next section explains.
 
 #### Manual Rendering
 
+<!--
 By default, `docz-plugin-storybook` adds all of your existing stories to Docz's navigation and page content so you get full docs, but if you'd like more fine-grained control, you can manually render stories from within any Docz `mdx` file.
 
 To set this up, you'll want to disable the default functionality when initializing the plugin by passing `{ manual: true }`.
@@ -73,7 +74,9 @@ export default {
 }
 ```
 
-You can then render any of your stories within Docz `mdx` files by using the `Story` or `Stories` React components.
+-->
+
+You can render any of your stories within Docz `mdx` files by using the `Story` or `Stories` React components.
 
 ```mdx
 // button.mdx
@@ -113,42 +116,17 @@ storiesOf('Button', module)
   ))
 ```
 
-The source files containing your stories can exist anywhere in your source as long as they're loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
+The source files containing your stories can exist anywhere as long as they're loaded from Storybook's main entrypoint which defaults to `.storybook/config.js`.
 
 Also note that these stories are loaded and exposed automagically by the plugin! 🤯
 
-## How does it work?
+## FAQ
 
-This plugin performs its magic with a few key steps:
-
-1. Add the storybook entrypoint as an additional webpack entry in Docz's config.
-2. Alias `@storybook/react` to a minimal shim that replaces Storybook's built-in UX with logic to aggregate story metadata as their `storiesOf` and `.add` are called. This shim matches `@storybook/react`'s public exports exactly, so any existing Storybook code will continue to work.
-3. Docz's client-side code executes which initializes our all of the stories.
-4. In the case of automatic rendering, we take all of the aggregated stories and add them to Docz's contents via mdx files in `.docz/storybook/`.
-5. In the case of manual rendering, whenever a `Story` or multiple `Stories` are rendered, these components look up the target stories in our shim's store and invoke their renderer which produces a normal React subtree.
-6. Profit!
+See #11 for a detailed FAQ, including answers to why Docz and Storybook solve two different problems, how this plugin works, and how to customize your stories further.
 
 ## Status
 
-This module is stable but some Storybook addons and webpack customizations will take extra steps to get working from within Docz.
-
-#### Roadmap
-
-- [x] create a minimal shim for `@storybook/react` that just aggregates story metadata
-- [x] alias `@storybook/react` to our custom shim
-- [x] add docz webpack entry for loading stories client-side into our custom shim
-- [x] `Story` react component
-- [x] `Stories` react component
-- [ ] allow custom `Story` wrapper for iframes or shadow dom isolation
-- [ ] ensure `Story` is rerendered if its story changes during hot reload
-- [x] support manual story rendering within docz mdx files
-- [ ] support automatic storybook rendering (plugin option to insert one virtual mdx entry for each story "kind")
-- [ ] add docz webpack support for other loaders that storybook contains by default (eg, css)
-- [ ] add support for custom storybook webpack configs
-- [ ] add support for most popular storybook addons
-- [ ] integration tests with various storybook fixtures
-- [ ] example projects that showcase the storybook to docz conversion
-- [ ] would like a way to add a docz anchor and link to Stories children so each Story `<h2>` is linked in the primary nav
+This module is stable and works well with manual Story rendering from within Docz. See #12 for a detailed breakdown of the current roadmap.
 
 ## Related
 
