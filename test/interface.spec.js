@@ -16,7 +16,8 @@ test('docz-storybook-plugin interface', () => {
     },
     resolve: {
       alias: {
-        '@storybook/react': path.resolve(__dirname, '..', 'src', './shim')
+        '@storybook/react': path.resolve(__dirname, '..', 'src', './shim'),
+        'docz-plugin-storybook/story-wrapper': path.resolve(__dirname, '..', 'src', './default-wrapper.js')
       }
     }
   })
