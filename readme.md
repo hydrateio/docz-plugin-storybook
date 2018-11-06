@@ -54,7 +54,7 @@ export default {
 }
 ```
 
-3. ~~Start docz and view all your existing stories that've been automatically imported -- complete with all the hot reloading and mdx goodness that makes Docz so great!~~ Once #7 is resolved, all of your stories will automatically be populated within Docz. Until then, you'll need to manually render your stories within mdx files as the next section explains.
+3. ~~Start docz and view all your existing stories that've been automatically imported -- complete with all the hot reloading and mdx goodness that makes Docz so great!~~ Once [#7](https://github.com/hydrateio/docz-plugin-storybook/issues/7) is resolved, all of your stories will automatically be populated within Docz. Until then, you'll need to manually render your stories within mdx files as the next section explains.
 
 #### Manual Rendering
 
@@ -122,11 +122,11 @@ Also note that these stories are loaded and exposed automagically by the plugin!
 
 ## FAQ
 
-See #11 for a detailed FAQ, including answers to why Docz and Storybook solve two different problems, how this plugin works, and how to customize your stories further.
+See [#11](https://github.com/hydrateio/docz-plugin-storybook/issues/11) for a detailed FAQ, including answers to why Docz and Storybook solve two different problems, how this plugin works, and how to customize your stories further.
 
 ## Status
 
-This module is stable and works well with manual Story rendering from within Docz. See #12 for a detailed breakdown of the current roadmap.
+This module is stable and works well with manual Story rendering from within Docz. See [#12](https://github.com/hydrateio/docz-plugin-storybook/issues/12) for a detailed breakdown of the current roadmap.
 
 ## Related
 
