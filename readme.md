@@ -126,7 +126,7 @@ See [#11](https://github.com/hydrateio/docz-plugin-storybook/issues/11) for a de
 
 ## Status
 
-See [#12](https://github.com/hydrateio/docz-plugin-storybook/issues/12) for a detailed breakdown of the current roadmap. In short, this module is stable and works well with manual Story rendering from within Docz, but automated docz population, story isolation, and custom webpack configs are an active WIP.
+See [#12](https://github.com/hydrateio/docz-plugin-storybook/issues/12) for a detailed breakdown of the current roadmap. In short, this module is stable and works well with manual Story rendering from within Docz, but populating Docz's contents automatically, story isolation, and custom webpack configs are an active WIP.
 
 ## Related
 
