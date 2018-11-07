@@ -12,7 +12,7 @@ test('docz-storybook-plugin interface', () => {
 
   expect(config).toEqual({
     entry: {
-      storybook: path.resolve(__dirname, '..', '.storybook', 'config.js')
+      app: [path.resolve(__dirname, '..', '.storybook', 'config.js')]
     },
     resolve: {
       alias: {

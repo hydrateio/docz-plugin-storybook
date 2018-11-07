@@ -38,14 +38,16 @@ export const storybook = (opts = { }) => {
       return config
     },
 
-    modifyBundlerConfig: (config, dev) => {
-      config.entry.storybook = storybookConfigPath
+    modifyBundlerConfig: (config, dev, args) => {
+      config.entry = config.entry || {}
+      config.entry.app = config.entry.app || []
+      config.entry.app.push(storybookConfigPath)
 
       config.resolve = config.resolve || {}
       config.resolve.alias = config.resolve.alias || {}
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
 
-      // create a wrapper around each component for isolation and surface it as docz-plugin-storybook/wrapper
+      // create a wrapper around each component for isolation and surface it as docz-plugin-storybook/story-wrapper
       config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper || './default-wrapper')
 
       console.log('webpack')

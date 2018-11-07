@@ -20,12 +20,14 @@
   "scripts": {
     "prebuild": "yarn run clean",
     "build": "babel src -s -d dist",
+    "build:examples": "cd examples/basic && yarn && yarn docz:build",
     "prestart": "yarn run clean",
     "start": "babel src -w -s -d dist",
     "dev": "yarn run start",
     "clean": "del dist",
     "lint": "eslint .",
-    "test": "yarn run lint && jest"
+    "pretest": "yarn build",
+    "test": "yarn run lint && jest && yarn build:examples"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
