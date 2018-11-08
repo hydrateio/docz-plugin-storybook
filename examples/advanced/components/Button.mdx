@@ -1,0 +1,50 @@
+---
+name: Button
+---
+
+import Button, { StyledButton } from './Button'
+import { Story, Stories } from 'docz-plugin-storybook/dist/react'
+
+# Button
+
+## Button with Text
+
+<Button>Hello Button</Button>
+
+## Button with Emoji
+
+<Button>
+  <span role={'img'} aria-label={'so cool'}>
+    😀 😎 👍 💯
+  </span>
+</Button>
+
+## Styled Components Button
+
+<StyledButton>Styled Button</StyledButton>
+
+---
+
+## Stories
+
+<Stories kind="Button" />
+
+## Story with Styled Components
+
+#### wrapped with react-styled-frame
+
+<Story
+  kind="Styled Components"
+  name="with text"
+  style={{ height: 50 }}
+  wrapper="styled-frame"
+/>
+
+#### wrapped with react-styled-shadow-dom
+
+<Story
+  kind="Styled Components"
+  name="with text"
+  style={{ height: 50 }}
+  wrapper="shadow-dom"
+/>
