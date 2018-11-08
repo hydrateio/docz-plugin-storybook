@@ -13,6 +13,7 @@ export default class Stories extends Component {
   render() {
     const {
       kind,
+      storyProps = {},
       ...rest
     } = this.props
 
@@ -26,19 +27,12 @@ export default class Stories extends Component {
     }
 
     return (
-      <div
-        {...rest}
-      >
-        {names.map((name) => (
-          <Fragment
-            key={name}
-          >
+      <div {...rest}>
+        {names.map(name => (
+          <Fragment key={name}>
             <h2>{name}</h2>
 
-            <Story
-              kind={kind}
-              name={name}
-            />
+            <Story kind={kind} name={name} {...storyProps} />
           </Fragment>
         ))}
       </div>
