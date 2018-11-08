@@ -8,7 +8,7 @@ export const storybook = (opts = { }) => {
   const {
     // these options are intended to mimic the storybook cli options
     configDir = paths.storybook.configDir,
-    storyWrapper,
+    storyWrapper = './default-wrapper',
     autofill = true
   } = opts
 
@@ -55,8 +55,16 @@ ${stories.map(({ name }) => `
     },
 
     modifyBundlerConfig: (config, dev, args) => {
+      const addonsPath = path.join(configDir, 'addons.js')
+      const webpackConfigPath = path.join(configDir, 'webpack.config.js')
+
       config.entry = config.entry || {}
       config.entry.app = config.entry.app || []
+
+      if (fs.existsSync(addonsPath)) {
+        config.entry.app.push(addonsPath)
+      }
+
       config.entry.app.push(storybookConfigPath)
 
       config.resolve = config.resolve || {}
@@ -64,13 +72,23 @@ ${stories.map(({ name }) => `
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
 
       // create a wrapper around each component for isolation and surface it as docz-plugin-storybook/story-wrapper
-      config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper || './default-wrapper')
+      config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper)
 
+      if (fs.existsSync(webpackConfigPath)) {
+        const customizeConfig = require(webpackConfigPath)
+        config = customizeConfig(config, process.env.NODE_ENV)
+      }
+
+      config.module.rules = config.module.rules
+        .filter((rule) => !rule.loader || !/json-loader/.test(rule.loader))
+
+      /*
       console.log('webpack')
       console.log('-'.repeat(80))
       console.log(JSON.stringify(config, null, 2))
       console.log()
       console.log()
+      */
 
       return config
     }
