@@ -1,5 +1,5 @@
 {
-  "name": "docz-plugin-storybook-example-basic",
+  "name": "docz-plugin-storybook-example-advanced",
   "private": true,
   "version": "0.0.0",
   "description": "",
@@ -25,6 +25,10 @@
     "docz-plugin-storybook": "link:../..",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-virtualized": "^9.21.0"
+    "react-frame-component": "^4.0.2",
+    "react-styled-frame": "^1.1.0",
+    "react-styled-shadow-dom": "^1.0.0",
+    "react-virtualized": "^9.21.0",
+    "styled-components": "^4.0.3"
   }
 }

@@ -2,7 +2,7 @@
 name: Button
 ---
 
-import Button, { StyledButton } from './Button'
+import Button from './Button'
 import { Story, Stories } from 'docz-plugin-storybook/dist/react'
 
 # Button
@@ -19,32 +19,12 @@ import { Story, Stories } from 'docz-plugin-storybook/dist/react'
   </span>
 </Button>
 
-## Styled Components Button
-
-<StyledButton>Styled Button</StyledButton>
-
 ---
+
+## Story with Text
+
+<Story kind="Button" name="with text" />
 
 ## Stories
 
 <Stories kind="Button" />
-
-## Story with Styled Components
-
-#### wrapped with react-styled-frame
-
-<Story
-  kind="Styled Components"
-  name="with text"
-  style={{ height: 50 }}
-  wrapper="styled-frame"
-/>
-
-#### wrapped with react-styled-shadow-dom
-
-<Story
-  kind="Styled Components"
-  name="with text"
-  style={{ height: 50 }}
-  wrapper="shadow-dom"
-/>
