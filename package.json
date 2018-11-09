@@ -33,11 +33,23 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
-    "docz-core": "^0.12.5"
+    "@babel/core": "^7.1.2",
+    "@sindresorhus/slugify": "^0.6.0",
+    "@storybook/react": "^4.0.0",
+    "babel-loader": "^8.0.4",
+    "detect-port": "^1.2.3",
+    "docz-core": "^0.12.5",
+    "fs-extra": "^7.0.0",
+    "koa-static": "^5.0.0",
+    "puppeteer": "^1.9.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "read-pkg-up": "^4.0.0",
+    "serve-handler": "^5.0.5",
+    "tempy": "^0.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
@@ -47,14 +59,13 @@
     "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.26.1",
+    "eslint-plugin-jest": "^21.26.2",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^3.1.0",
     "jest": "^23.6.0",
     "prop-types": "^15.6.2",
-    "react": "^16.6.0",
     "react-test-renderer": "^16.6.0"
   }
 }

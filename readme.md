@@ -61,7 +61,7 @@ export default {
 <!--
 By default, `docz-plugin-storybook` adds all of your existing stories to Docz's navigation and page content so you get full docs, but if you'd like more fine-grained control, you can manually render stories from within any Docz `mdx` file.
 
-To set this up, you'll want to disable the default functionality when initializing the plugin by passing `{ manual: true }`.
+To set this up, you'll want to disable the default functionality when initializing the plugin by passing `{ autofill: false }`.
 
 ```js
 // doczrc.js
@@ -69,7 +69,7 @@ import { storybook } from 'docz-plugin-storybook'
 
 export default {
   plugins: [
-    storybook({ manual: true })
+    storybook({ autofill: false })
   ]
 }
 ```

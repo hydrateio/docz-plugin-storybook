@@ -1,4 +1,7 @@
 import ClientAPI from './client-api'
+import './channel'
+
+console.log('>>> @STORYBOOK/REACT SHIM')
 
 const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
 const clientAPI = window[globalHook] || new ClientAPI()
@@ -24,3 +27,5 @@ export const configure = (loaders, module) => {
 
 // additional, private exports
 export const _clientAPI = clientAPI
+
+console.log('<<< @STORYBOOK/REACT SHIM')
