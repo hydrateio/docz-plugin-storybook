@@ -34,11 +34,13 @@
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
+    "@sindresorhus/slugify": "^0.6.0",
     "@storybook/react": "^4.0.0",
     "babel-loader": "^8.0.4",
     "detect-port": "^1.2.3",
     "docz-core": "^0.12.5",
     "fs-extra": "^7.0.0",
+    "koa-static": "^5.0.0",
     "puppeteer": "^1.9.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
