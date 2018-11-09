@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 import koaStatic from 'koa-static'
 import slugify from '@sindresorhus/slugify'
 import paths from './paths'
-import buildStorybook from './build-storybook'
+// import buildStorybook from './build-storybook'
 
 export const storybook = (opts = { }) => {
   const {
@@ -20,16 +20,22 @@ export const storybook = (opts = { }) => {
   const storybookFiles = []
 
   return createPlugin({
-    setConfig: async (config) => {
-      const storybook = autofill
-        ? await buildStorybook({ configDir })
-        : stories
+    // TODO: making setConfig synchronous for now so we don't rely on our docz PR
+    setConfig: (config) => {
+      if (autofill) {
+        console.error(`Error: docz-plugin-storybook autofill is currently unsupported`)
+        process.exit(-1)
+      }
+
+      const storybook = stories
+      // ? await buildStorybook({ configDir })
+      // : stories
 
       if (storybook && storybook.length) {
         // console.log('storybook', JSON.stringify(storybook, null, 2))
 
-        await fs.ensureDir(paths.temp)
-        await Promise.all(storybook.map((storyKind) => {
+        fs.ensureDirSync(paths.temp)
+        storybook.forEach((storyKind) => {
           const { kind, stories } = storyKind
           const kindSlug = slugify(kind)
 
@@ -52,8 +58,8 @@ ${stories.map(({ name }) => `
 `
           const file = path.join(paths.temp, `${kindSlug}-storybook.mdx`)
           storybookFiles.push(file)
-          return fs.writeFile(file, content)
-        }))
+          return fs.writeFileSync(file, content)
+        })
       }
 
       return config

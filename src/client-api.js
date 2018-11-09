@@ -5,6 +5,7 @@ export default class ClientAPI {
     this._storyStore = storyStore
     this._addons = {}
     this._globalParameters = {}
+    this._globalDecorators = []
   }
 
   get store () {
@@ -19,7 +20,7 @@ export default class ClientAPI {
   }
 
   addDecorator = (decorator) => {
-    // TODO: noop
+    this._globalDecorators.push(decorator)
   }
 
   addParameters = (parameters) => {
@@ -27,7 +28,7 @@ export default class ClientAPI {
   }
 
   clearDecorators = () => {
-    // TODO: noop
+    this._globalDecorators = []
   }
 
   storiesOf = (kind, m) => {
@@ -48,6 +49,7 @@ export default class ClientAPI {
       })
     }
 
+    const localDecorators = []
     let localParameters = {}
     const api = {
       kind
@@ -70,6 +72,16 @@ export default class ClientAPI {
       if (this._storyStore.hasStory(kind, storyName)) {
         console.warn(`Story of "${kind}" named "${storyName}" already exists`)
       }
+
+      // Wrap the getStory function with each decorator. The first
+      // decorator will wrap the story function. The second will
+      // wrap the first decorator and so on.
+      const decorators = [...localDecorators, ...this._globalDecorators]
+
+      const fn = decorators.reduce(
+        (decorated, decorator) => context => decorator(() => decorated(context), context),
+        getStory
+      )
 
       const fileName = m ? m.id : null
 
@@ -99,7 +111,7 @@ export default class ClientAPI {
       this._storyStore.addStory(
         kind,
         storyName,
-        getStory,
+        fn,
         allParam
       )
 
@@ -108,12 +120,12 @@ export default class ClientAPI {
     }
 
     api.addDecorator = decorator => {
-      // TODO: noop
+      localDecorators.push(decorator)
       return api
     }
 
     api.addParameters = parameters => {
-      // TODO: noop
+      localParameters = { ...localParameters, ...parameters }
       return api
     }
 

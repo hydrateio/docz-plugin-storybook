@@ -1,4 +1,5 @@
 import ClientAPI from './client-api'
+import './channel'
 
 console.log('>>> @STORYBOOK/REACT SHIM')
 
