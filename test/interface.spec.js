@@ -6,7 +6,8 @@ test('docz-storybook-plugin interface', () => {
   expect(typeof plugin.modifyBundlerConfig).toBe('function')
 
   const config = {
-    entry: {}
+    entry: {},
+    module: { rules: [] }
   }
   plugin.modifyBundlerConfig(config, true)
 
@@ -19,6 +20,7 @@ test('docz-storybook-plugin interface', () => {
         '@storybook/react': path.resolve(__dirname, '..', 'src', './shim'),
         'docz-plugin-storybook/story-wrapper': path.resolve(__dirname, '..', 'src', './default-wrapper.js')
       }
-    }
+    },
+    module: { rules: [] }
   })
 })

@@ -101,8 +101,6 @@ ${stories.map(({ name }) => `
     },
 
     onCreateApp: (app) => {
-      console.log('onCreateApp', app)
-
       if (staticDir) {
         const staticPath = path.resolve(staticDir)
 
