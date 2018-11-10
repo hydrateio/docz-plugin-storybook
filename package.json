@@ -52,6 +52,8 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addons": "^4.0.4",
+    "@storybook/channel-postmessage": "^4.0.4",
     "ava": "^0.25.0",
     "babel-eslint": "^10.0.1",
     "del-cli": "^1.1.0",
