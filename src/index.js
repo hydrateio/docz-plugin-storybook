@@ -6,7 +6,7 @@ import semver from 'semver'
 import slugify from '@sindresorhus/slugify'
 
 // import buildStorybook from './build-storybook'
-import findPkgUpDep from './find-pkg-up-dep'
+import resolvePkgVersion from './resolve-pkg-version'
 import paths from './paths'
 import defaultStoriesOfTemplate from './default-stories-of-template'
 
@@ -21,7 +21,7 @@ export const storybook = (opts = { }) => {
     staticDir,
     storiesOfTemplate = defaultStoriesOfTemplate,
     storyWrapper = './default-wrapper',
-    storybookVersion = findPkgUpDep('@storybook/react'),
+    storybookVersion = resolvePkgVersion('@storybook/react'),
     autofill = false,
     debug = false,
     stories
