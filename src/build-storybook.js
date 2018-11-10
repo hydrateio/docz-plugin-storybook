@@ -1,10 +1,14 @@
-const build = require('@storybook/react/standalone')
-const detect = require('detect-port')
-const handler = require('serve-handler')
-const http = require('http')
-const puppeteer = require('puppeteer')
-const readPkgUp = require('read-pkg-up')
-const tempy = require('tempy')
+// TODO: rely on @storybook/react as a peer-dependency and probe its version at
+// runtime for v3 vs v4 build process
+
+import build from '@storybook/react/standalone'
+import detect from 'detect-port'
+import handler from 'serve-handler'
+import http from 'http'
+import pRetry from 'p-retry'
+import puppeteer from 'puppeteer'
+import readPkgUp from 'read-pkg-up'
+import tempy from 'tempy'
 
 module.exports = async (opts = { }) => {
   // build storybook standalone with custom webpack config
@@ -53,12 +57,11 @@ module.exports = async (opts = { }) => {
   const page = await browser.newPage()
 
   await page.goto(`${baseUrl}/iframe.html`)
-  const storybook = await page.evaluate(() => {
+  const storybook = await pRetry(() => page.evaluate(() => {
     const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
 
-    // TODO: if this hook doesn't exist, user needs to upgrade @storybook/react
     return window[globalHook].getStorybook()
-  })
+  }))
 
   await Promise.all([
     browser.close(),
