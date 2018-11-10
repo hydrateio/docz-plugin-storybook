@@ -33,26 +33,27 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
-    "@babel/core": "^7.1.2",
     "@sindresorhus/slugify": "^0.6.0",
-    "@storybook/react": "^4.0.0",
-    "babel-loader": "^8.0.4",
     "detect-port": "^1.2.3",
     "docz-core": "^0.12.5",
     "fs-extra": "^7.0.0",
     "koa-static": "^5.0.0",
     "puppeteer": "^1.9.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.6.1",
     "read-pkg-up": "^4.0.0",
+    "resolve": "^1.8.1",
+    "semver": "^5.6.0",
     "serve-handler": "^5.0.5",
     "tempy": "^0.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addons": "^4.0.4",
+    "@storybook/channel-postmessage": "^4.0.4",
     "ava": "^0.25.0",
     "babel-eslint": "^10.0.1",
     "del-cli": "^1.1.0",
@@ -67,5 +68,8 @@
     "jest": "^23.6.0",
     "prop-types": "^15.6.2",
     "react-test-renderer": "^16.6.0"
+  },
+  "peerDependencies": {
+    "@storybook/react": "^3 || ^4"
   }
 }
