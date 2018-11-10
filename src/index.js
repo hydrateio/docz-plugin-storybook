@@ -127,6 +127,7 @@ ${stories.map(({ name }) => `
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
       config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper)
 
+      // TODO: replace this with an alias of `storybook-readme` in the future
       const mdxRule = config.module.rules
         .find((rule) => rule.use && rule.use[0] && rule.use[0].loader && rule.use[0].loader.endsWith('?id=mdx'))
 
