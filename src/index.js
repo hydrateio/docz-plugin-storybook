@@ -8,7 +8,7 @@ import slugify from '@sindresorhus/slugify'
 // import buildStorybook from './build-storybook'
 import findPkgUpDep from './find-pkg-up-dep'
 import paths from './paths'
-import renderStory from './render-story'
+import defaultStoriesOfTemplate from './default-stories-of-template'
 
 const minStorybookSemver = '>=3'
 const v3StorybookSemver = '^3'
@@ -19,7 +19,7 @@ export const storybook = (opts = { }) => {
     // these options are intended to mimic the storybook cli options
     configDir = paths.storybook.configDir,
     staticDir,
-    storyTemplate,
+    storiesOfTemplate = defaultStoriesOfTemplate,
     storyWrapper = './default-wrapper',
     storybookVersion = findPkgUpDep('@storybook/react'),
     autofill = false,
@@ -51,7 +51,6 @@ export const storybook = (opts = { }) => {
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
   const storybookFiles = []
-  const renderStoryTemplate = renderStory(storyTemplate)
 
   return createPlugin({
     // TODO: making setConfig synchronous for now so we don't rely on our docz PR
@@ -74,22 +73,9 @@ export const storybook = (opts = { }) => {
         storybook.forEach((storyKind) => {
           const { kind, stories } = storyKind
           const kindSlug = slugify(kind)
-          const routes = kind.split('/').map((p) => p.trim())
-
-          let kindTitle = kind
-          let menu = null
-
-          if (routes.length > 1) {
-            kindTitle = routes.slice(1).join(' - ')
-            menu = routes[0]
-          }
-
-          // TODO: support " characters in kind and name
-          const content = renderStoryTemplate({
+          const content = storiesOfTemplate({
             kind,
-            stories,
-            kindTitle,
-            menu
+            stories
           })
 
           const file = path.join(paths.temp, `${kindSlug}-storybook.mdx`)
