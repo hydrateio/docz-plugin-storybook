@@ -19,12 +19,12 @@ export const storybook = (opts = { }) => {
     configDir = paths.storybook.configDir,
     staticDir,
     storyWrapper = './default-wrapper',
+    storybookVersion = findPkgUpDep('@storybook/react'),
     autofill = false,
     debug = false,
     stories
   } = opts
 
-  const storybookVersion = findPkgUpDep('@storybook/react')
   if (!storybookVersion) {
     console.error('[docz-plugin-storybook] "@storybook/react" is a required peer dependency. Aborting.')
     process.exit(1)
@@ -43,7 +43,9 @@ export const storybook = (opts = { }) => {
     process.exit(1)
   }
 
-  console.log({ storybookVersion, isStorybookV3, isStorybookV4 })
+  if (debug) {
+    console.log({ storybookVersion, isStorybookV3, isStorybookV4 })
+  }
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
   const storybookFiles = []

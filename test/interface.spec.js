@@ -2,7 +2,9 @@ import { storybook } from '../src'
 import path from 'path'
 
 test('docz-storybook-plugin interface', () => {
-  const plugin = storybook()
+  const plugin = storybook({
+    storybookVersion: '4.0.4'
+  })
   expect(typeof plugin.modifyBundlerConfig).toBe('function')
 
   const config = {
@@ -21,6 +23,20 @@ test('docz-storybook-plugin interface', () => {
         'docz-plugin-storybook/story-wrapper': path.resolve(__dirname, '..', 'src', './default-wrapper.js')
       }
     },
-    module: { rules: [] }
+    module: {
+      rules: [
+        {
+          test: /\.md$/,
+          use: [
+            {
+              loader: 'html-loader'
+            },
+            {
+              loader: 'markdown-loader'
+            }
+          ]
+        }
+      ]
+    }
   })
 })
