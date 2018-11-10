@@ -13,7 +13,6 @@ export default ({ kind, stories }) => {
 ---
 name: ${kindTitle}
 ${menu ? `menu: ${menu}` : ''}
-fullpage: true
 ---
 
 import { Story } from 'docz-plugin-storybook/dist/react'
