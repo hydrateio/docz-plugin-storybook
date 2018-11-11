@@ -1,6 +1,3 @@
-// TODO: rely on @storybook/react as a peer-dependency and probe its version at
-// runtime for v3 vs v4 build process
-
 import build from '@storybook/react/standalone'
 import detect from 'detect-port'
 import handler from 'serve-handler'
