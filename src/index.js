@@ -1,6 +1,6 @@
 import { createPlugin } from 'docz-core'
-import * as path from 'path'
 import fs from 'fs-extra'
+import path from 'path'
 import koaStatic from 'koa-static'
 import semver from 'semver'
 import slugify from '@sindresorhus/slugify'
@@ -45,12 +45,18 @@ export const storybook = (opts = { }) => {
     process.exit(1)
   }
 
-  if (debug) {
-    console.log({ storybookVersion, isStorybookV3, isStorybookV4 })
+  const staticPath = staticDir && path.resolve(staticDir)
+  if (staticPath && !fs.existsSync(staticPath)) {
+    console.error(`Error: no such directory to load static files: ${staticPath}`)
+    process.exit(1)
   }
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
   const storybookFiles = []
+
+  if (debug) {
+    console.log({ storybookVersion, isStorybookV3, isStorybookV4 })
+  }
 
   return createPlugin({
     // TODO: making setConfig synchronous for now so we don't rely on our docz PR
@@ -60,17 +66,16 @@ export const storybook = (opts = { }) => {
         process.exit(1)
       }
 
-      const storybook = stories
       // ? await buildStorybook({ configDir, staticDir })
       // : stories
 
-      if (storybook && storybook.length) {
+      if (stories && stories.length) {
         if (debug) {
-          console.log('storybook', JSON.stringify(storybook, null, 2))
+          console.log('stories', JSON.stringify(stories, null, 2))
         }
 
         fs.ensureDirSync(paths.temp)
-        storybook.forEach((storyKind) => {
+        stories.forEach((storyKind) => {
           const { kind, stories } = storyKind
           const kindSlug = slugify(kind)
           const content = storiesOfTemplate({
@@ -149,15 +154,14 @@ export const storybook = (opts = { }) => {
     },
 
     onCreateApp: (app) => {
-      if (staticDir) {
-        const staticPath = path.resolve(staticDir)
-
-        if (!fs.existsSync(staticPath)) {
-          console.error(`Error: no such directory to load static files: ${staticPath}`)
-          process.exit(1)
-        }
-
+      if (staticPath) {
         app.use(koaStatic(staticPath))
+      }
+    },
+
+    onPostBuild: (config) => {
+      if (staticPath) {
+        fs.copySync(staticPath, config.dest)
       }
     }
   })
