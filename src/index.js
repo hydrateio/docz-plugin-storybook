@@ -46,7 +46,7 @@ export const storybook = (opts = { }) => {
   }
 
   const staticPath = staticDir && path.resolve(staticDir)
-  if (!fs.existsSync(staticPath)) {
+  if (staticPath && !fs.existsSync(staticPath)) {
     console.error(`Error: no such directory to load static files: ${staticPath}`)
     process.exit(1)
   }
@@ -66,17 +66,16 @@ export const storybook = (opts = { }) => {
         process.exit(1)
       }
 
-      const storybook = stories
       // ? await buildStorybook({ configDir, staticDir })
       // : stories
 
-      if (storybook && storybook.length) {
+      if (stories && stories.length) {
         if (debug) {
-          console.log('storybook', JSON.stringify(storybook, null, 2))
+          console.log('stories', JSON.stringify(stories, null, 2))
         }
 
         fs.ensureDirSync(paths.temp)
-        storybook.forEach((storyKind) => {
+        stories.forEach((storyKind) => {
           const { kind, stories } = storyKind
           const kindSlug = slugify(kind)
           const content = storiesOfTemplate({
