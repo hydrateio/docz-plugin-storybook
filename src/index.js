@@ -1,6 +1,6 @@
 import { createPlugin } from 'docz-core'
-import * as path from 'path'
 import fs from 'fs-extra'
+import path from 'path'
 import koaStatic from 'koa-static'
 import semver from 'semver'
 import slugify from '@sindresorhus/slugify'
@@ -45,12 +45,18 @@ export const storybook = (opts = { }) => {
     process.exit(1)
   }
 
-  if (debug) {
-    console.log({ storybookVersion, isStorybookV3, isStorybookV4 })
+  const staticPath = staticDir && path.resolve(staticDir)
+  if (!fs.existsSync(staticPath)) {
+    console.error(`Error: no such directory to load static files: ${staticPath}`)
+    process.exit(1)
   }
 
   const storybookConfigPath = path.resolve(configDir, paths.storybook.config)
   const storybookFiles = []
+
+  if (debug) {
+    console.log({ storybookVersion, isStorybookV3, isStorybookV4 })
+  }
 
   return createPlugin({
     // TODO: making setConfig synchronous for now so we don't rely on our docz PR
@@ -149,15 +155,15 @@ export const storybook = (opts = { }) => {
     },
 
     onCreateApp: (app) => {
-      if (staticDir) {
-        const staticPath = path.resolve(staticDir)
-
-        if (!fs.existsSync(staticPath)) {
-          console.error(`Error: no such directory to load static files: ${staticPath}`)
-          process.exit(1)
-        }
-
+      if (staticPath) {
         app.use(koaStatic(staticPath))
+      }
+    },
+
+    onPostBuild: (config) => {
+      if (staticPath) {
+        // const dest = path.join(config.dest, 'static')
+        fs.copySync(staticPath, config.dest)
       }
     }
   })
