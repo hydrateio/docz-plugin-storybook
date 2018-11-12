@@ -161,7 +161,6 @@ export const storybook = (opts = { }) => {
 
     onPostBuild: (config) => {
       if (staticPath) {
-        // const dest = path.join(config.dest, 'static')
         fs.copySync(staticPath, config.dest)
       }
     }
