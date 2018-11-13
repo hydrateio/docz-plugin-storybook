@@ -1,5 +1,7 @@
 import ClientAPI from './client-api'
-import './channel'
+
+// TODO: possibly remove this from shim
+// import './channel'
 
 const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
 const clientAPI = window[globalHook] || new ClientAPI()

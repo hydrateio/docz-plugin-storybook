@@ -20,7 +20,8 @@ export const storybook = (opts = { }) => {
     configDir = paths.storybook.configDir,
     staticDir,
     storiesOfTemplate = defaultStoriesOfTemplate,
-    storyWrapper = './default-wrapper',
+    storyWrapper = './default-story-wrapper',
+    themeWrapper = './default-theme-wrapper',
     storybookVersion = resolvePkgVersion('@storybook/react'),
     autofill = false,
     debug = false,
@@ -89,10 +90,13 @@ export const storybook = (opts = { }) => {
         })
       }
 
+      config.wrapper = 'docz-plugin-storybook/theme-wrapper'
+
       return config
     },
 
     modifyFiles: (files) => {
+      console.log('modifyFiles', files)
       return files.concat(storybookFiles)
     },
 
@@ -113,6 +117,12 @@ export const storybook = (opts = { }) => {
       config.resolve.alias = config.resolve.alias || {}
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
       config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper)
+      config.resolve.alias['docz-plugin-storybook/theme-wrapper'] = require.resolve(themeWrapper)
+      config.resolve.alias['docz-plugin-storybook/channel-postmessage'] = require.resolve('@storybook/channel-postmessage')
+      config.resolve.alias['docz-plugin-storybook/core-events'] = require.resolve('@storybook/core-events')
+      // @storybook/components @storybook/mantra-core @storybook/podda @storybook/react-komposer
+
+      console.log(JSON.stringify(config.resolve.alias, null, 2))
 
       // TODO: replace this with an alias of `storybook-readme` in the future
       const mdxRule = config.module.rules

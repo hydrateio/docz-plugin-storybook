@@ -1,0 +1,34 @@
+import { AddonPanel, Layout } from 'docz-plugin-storybook/components'
+
+        <Layout
+          showStoriesPanel={false}
+          showAddonPanel={true}
+          goFullScreen={false}
+          storiesPanel={this._noop}
+          preview={this._noop}
+          addonPanel={this._addonPanel}
+          shortcutsHelp={this._noop}
+          searchBox={this._noop}
+          addonPanelInRight={false}
+          isMobileDevice={false}
+        />
+
+  _addonPanel = () => {
+    console.log('PANELS', addons.getPanels())
+
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          width: '100%',
+          height: '100%',
+          background: 'red'
+        }}
+      />
+    )
+  }
+
+  _noop = () => {
+    return null
+  }
+
