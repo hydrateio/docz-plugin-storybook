@@ -19,6 +19,7 @@ export default class ReactProvider extends Provider {
 
   renderPreview(selectedKind, selectedStory) {
     // TODO
+    console.log('provider.renderPreview', selectedKind, selectedStory)
 
     return null
   }

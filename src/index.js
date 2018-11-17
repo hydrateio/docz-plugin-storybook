@@ -96,7 +96,6 @@ export const storybook = (opts = { }) => {
     },
 
     modifyFiles: (files) => {
-      console.log('modifyFiles', files)
       return files.concat(storybookFiles)
     },
 

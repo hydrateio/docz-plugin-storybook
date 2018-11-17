@@ -19,9 +19,9 @@ export default class DoczPluginStorybookDefaultThemeWrapper extends Component {
       <div
         {...rest}
       >
-        {children}
-
         <div ref={this._uiRef} />
+
+        {children}
       </div>
     )
   }
