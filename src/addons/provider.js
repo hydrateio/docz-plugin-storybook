@@ -1,16 +1,21 @@
-import createChannel from 'docz-plugin-storybook/channel-postmessage'
 import Events from 'docz-plugin-storybook/core-events'
 import { Provider } from 'storybook-ui-standalone'
+import { channel } from '../shim/channel'
 
 import addons from '@storybook/addons'
+
+export const ADDON_LOADED_EVENT = 'docz-plugin-storybook::ADDON_LOADED'
 
 export default class ReactProvider extends Provider {
   constructor() {
     super()
-    this.channel = createChannel({ page: 'manager' })
+    this.lastUsedApi = null
+    this.channel = channel
     addons.setChannel(this.channel)
 
     this.channel.emit(Events.CHANNEL_CREATED)
+
+    this.channel.on(ADDON_LOADED_EVENT, () => { this.reloadAddons() })
   }
 
   getPanels() {
@@ -24,7 +29,16 @@ export default class ReactProvider extends Provider {
     return null
   }
 
+  reloadAddons = (...args) => {
+    console.log('Loading new addon', args[0])
+    addons.loadAddons(this.lastUsedApi)
+
+    console.log('Loaded Panels', {...addons.getPanels()})
+  }
+
   handleAPI(api) {
+    console.log('handling API')
+    this.lastUsedApi = api
     api.onStory((kind, story) => {
       this.channel.emit(Events.SET_CURRENT_STORY, { kind, story })
     })

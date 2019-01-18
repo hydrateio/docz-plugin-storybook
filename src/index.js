@@ -115,6 +115,7 @@ export const storybook = (opts = { }) => {
       config.resolve = config.resolve || {}
       config.resolve.alias = config.resolve.alias || {}
       config.resolve.alias['@storybook/react'] = path.resolve(__dirname, './shim')
+      config.resolve.alias['@storybook/addons'] = path.resolve(__dirname, './shim/addons.js')
       config.resolve.alias['docz-plugin-storybook/story-wrapper'] = require.resolve(storyWrapper)
       config.resolve.alias['docz-plugin-storybook/theme-wrapper'] = require.resolve(themeWrapper)
       config.resolve.alias['docz-plugin-storybook/channel-postmessage'] = require.resolve('@storybook/channel-postmessage')

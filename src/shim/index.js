@@ -1,4 +1,5 @@
 import ClientAPI from './client-api'
+import './channel'
 
 // TODO: possibly remove this from shim
 // import './channel'
@@ -18,6 +19,7 @@ export const getStorybook = clientAPI.getStorybook
 export const forceReRender = () => { } // TODO: noop
 
 export const configure = (loaders, module) => {
+  console.log('configuring storybook', loaders)
   if (loaders) {
     // load all stories into the client API via one or more imperative commonjs
     // 'require' trees

@@ -6,6 +6,7 @@ import Provider from './addons/provider'
 // this component will get mounted as the theme's root
 export default class DoczPluginStorybookDefaultThemeWrapper extends Component {
   componentDidMount() {
+    console.log('mounting theme wrapper')
     renderStorybookUI(this._ui, new Provider())
   }
 

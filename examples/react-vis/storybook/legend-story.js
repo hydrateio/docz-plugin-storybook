@@ -24,8 +24,13 @@ import {
   jsxOptions
 } from './storybook-utils.js';
 
+const decoratedKnobs = (...args) => {
+  console.log('decorating knob', args)
+  return withKnobs(...args)
+}
+
 storiesOf('Legends', module)
-  .addDecorator(withKnobs)
+  .addDecorator(decoratedKnobs)
   .add(
     'Discrete color legend',
     () => (

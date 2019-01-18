@@ -19,7 +19,8 @@
   },
   "keywords": [],
   "dependencies": {
-    "react-vis": "^1.11.4"
+    "react-vis": "^1.11.4",
+    "storybook-ui-standalone": "link:../../../storybook-ui-standalone"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.11",
