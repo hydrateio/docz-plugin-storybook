@@ -42,7 +42,8 @@ export default class ClientAPI {
       )
     }
 
-    if (m && m.hot && m.hot.dispose) {
+    if (m && m.hot && m.hot.accept && m.hot.dispose) {
+      m.hot.accept()
       m.hot.dispose(() => {
         this._storyStore.removeStoryKind(kind)
         this._storyStore.incrementRevision()
