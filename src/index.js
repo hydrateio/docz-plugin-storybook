@@ -76,11 +76,12 @@ export const storybook = (opts = { }) => {
 
         fs.ensureDirSync(paths.temp)
         stories.forEach((storyKind) => {
-          const { kind, stories } = storyKind
+          const { kind, stories, component } = storyKind
           const kindSlug = slugify(kind)
           const content = storiesOfTemplate({
             kind,
-            stories
+            stories,
+            component
           })
 
           const file = path.join(paths.temp, `${kindSlug}-storybook.mdx`)
