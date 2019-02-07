@@ -35,7 +35,6 @@
   "dependencies": {
     "@sindresorhus/slugify": "^0.6.0",
     "detect-port": "^1.2.3",
-    "docz-core": "^0.12.5",
     "fs-extra": "^7.0.0",
     "koa-static": "^5.0.0",
     "puppeteer": "^1.9.0",

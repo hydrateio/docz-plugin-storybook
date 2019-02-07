@@ -1,4 +1,3 @@
-import { createPlugin } from 'docz-core'
 import fs from 'fs-extra'
 import path from 'path'
 import koaStatic from 'koa-static'
@@ -14,7 +13,7 @@ const minStorybookSemver = '>=3'
 const v3StorybookSemver = '^3'
 const v4StorybookSemver = '^4'
 
-export const storybook = (opts = { }) => {
+export const storybook = (createPlugin, opts = {}) => {
   const {
     // these options are intended to mimic the storybook cli options
     configDir = paths.storybook.configDir,
