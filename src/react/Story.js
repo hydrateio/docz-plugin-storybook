@@ -7,13 +7,15 @@ import { _clientAPI } from '../shim'
 export default class Story extends Component {
   static propTypes = {
     kind: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    usageInstructions: PropTypes.node
   }
 
   render() {
     const {
       kind,
       name,
+      usageInstructions,
       ...rest
     } = this.props
 
@@ -23,6 +25,16 @@ export default class Story extends Component {
       console.error('unable to find story', { kind, name })
       return (
         <div />
+      )
+    }
+
+    if (usageInstructions) {
+      const UsageInstructions = usageInstructions
+      return (
+        <React.Fragment>
+          <StoryWrapper {...rest}>{story()}</StoryWrapper>
+          <UsageInstructions />
+        </React.Fragment>
       )
     }
 

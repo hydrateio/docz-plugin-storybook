@@ -1,27 +1,3 @@
-const renderComponentPlayground = (component) => {
-  if (!component) return ''
-
-  const { children, ...defaultPlaygroundProps } = component.defaultPlaygroundProps || {}
-
-  const propString = Object.keys(defaultPlaygroundProps).map(key => {
-    return `${key}={${defaultPlaygroundProps[key]}}`
-  }).join(' ')
-
-  if (children) {
-    return `<Playground>
-  <${component.importName} ${propString}>
-    ${children}
-  </${component.importName}>
-</Playground>
-`
-  }
-
-  return `<div>&lt;Playground&gt;
-  &lt;${component.importName} ${propString} /&gt;
-&lt;Playground&gt;</div>
-`
-}
-
 const renderComponentImports = (component) => {
   if (!component) return ''
 
@@ -33,6 +9,18 @@ const renderComponentImports = (component) => {
   return imports.map(imp => `import ${imp.importName} from '${imp.importPath}'`).join('\n')
 }
 
+const renderUsageInstructionsImports = (stories) => {
+  return stories
+    .filter(story => story.usageInstructionsMdxPath !== null)
+    .map(({ name, usageInstructionsMdxPath }) => `import ${stringify(name)} from '${usageInstructionsMdxPath}'`).join('\n')
+}
+
+const stringify = (name) => {
+  const updatedName = name.replace(/[^A-Za-z]/g, '')
+
+  return updatedName.charAt(0).toUpperCase() + updatedName.slice(1)
+}
+
 export default ({ kind, stories, component }) => {
   return `
 ---
@@ -40,14 +28,12 @@ routable: false
 ---
 
 import { Story } from 'docz-plugin-storybook/dist/react'
-import { Playground } from 'docz'
 ${renderComponentImports(component)}
+${renderUsageInstructionsImports(stories)}
 
-${stories.map(({ name }) => `## ${name}
+${stories.map(({ name, usageInstructionsMdxPath }) => `## ${name}
 
-<Story kind="${kind}" name="${name}" />
-
-${renderComponentPlayground(component)}
+<Story kind="${kind}" name="${name}" usageInstructions={${usageInstructionsMdxPath ? `${stringify(name)}` : null}} />
 `).join('\n')}
 `
 }
