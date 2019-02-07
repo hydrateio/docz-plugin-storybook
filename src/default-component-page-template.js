@@ -2,7 +2,7 @@ const defaultStorybookContentsRenderer = (kind) => '<StorybookContents />'
 
 const defaultStorybookContentsImportsRenderer = (kindSlug) => `import StorybookContents from './${kindSlug}-storybook.mdx'`
 
-export default ({ kind, stories, kindSlug, storybookContentsRenderer, storybookContentsImportsRenderer }) => {
+export default ({ kind, stories, component, kindSlug, storybookContentsRenderer, storybookContentsImportsRenderer }) => {
   const routes = kind.split('/').map((p) => p.trim())
 
   let kindTitle = kind
@@ -23,10 +23,10 @@ ${menu ? `menu: ${menu}` : ''}
 ---
 
 import { Playground } from 'docz'
-${storybookImportsRenderer(kindSlug)}
+${storybookImportsRenderer(kindSlug, component)}
 
 # ${kind}
 
-${storybookRenderer(kind)}
+${storybookRenderer(kind, component)}
 `
 }
