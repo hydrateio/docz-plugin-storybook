@@ -8,12 +8,16 @@ import slugify from '@sindresorhus/slugify'
 import resolvePkgVersion from './resolve-pkg-version'
 import paths from './paths'
 import defaultStoriesOfTemplate from './default-stories-of-template'
-import defaultStoriesOfTemplateWithPlaygrounds from './default-stories-of-template-with-playgrounds'
-import defaultComponentPageTemplate from './default-component-page-template'
 
 const minStorybookSemver = '>=3'
 const v3StorybookSemver = '^3'
 const v4StorybookSemver = '^4'
+
+const ensureArray = (value) => {
+  if (value instanceof Array) return value
+
+  return [value]
+}
 
 export const storybook = (createPlugin, opts = {}) => {
   const {
@@ -21,16 +25,10 @@ export const storybook = (createPlugin, opts = {}) => {
     configDir = paths.storybook.configDir,
     staticDir,
     storiesOfTemplate = defaultStoriesOfTemplate,
-    storiesOfTemplateWithPlaygrounds = defaultStoriesOfTemplateWithPlaygrounds,
-    componentPageTemplate = defaultComponentPageTemplate,
     storyWrapper = './default-wrapper',
     storybookVersion = resolvePkgVersion('@storybook/react'),
     autofill = false,
     debug = false,
-    storybookContentsRenderer = null,
-    storybookContentsImportsRenderer = null,
-    processStoriesWithPlaygrounds = false,
-    processStoriesWithoutPlaygrounds = true,
     stories
   } = opts
 
@@ -85,42 +83,21 @@ export const storybook = (createPlugin, opts = {}) => {
         stories.forEach((storyKind) => {
           const { kind, stories, component } = storyKind
           const kindSlug = slugify(kind)
-          if (processStoriesWithoutPlaygrounds) {
-            const storiesContent = storiesOfTemplate({
+          const storiesContents = ensureArray(
+            storiesOfTemplate({
               kind,
               stories,
-              component
+              component,
+              kindSlug
             })
+          )
 
-            const storiesFile = path.join(paths.temp, `${kindSlug}-storybook.mdx`)
+          storiesContents.forEach(storiesContent => {
+            const fileNameSuffix = storiesContent.fileNameSuffix ? storiesContent.fileNameSuffix : ''
+            const storiesFile = path.join(paths.temp, `${kindSlug}-storybook${fileNameSuffix}.mdx`)
             storybookFiles.push(storiesFile)
-            fs.writeFileSync(storiesFile, storiesContent)
-          }
-
-          if (processStoriesWithPlaygrounds) {
-            const storiesContent = storiesOfTemplateWithPlaygrounds({
-              kind,
-              stories,
-              component
-            })
-
-            const storiesFile = path.join(paths.temp, `${kindSlug}-storybook-with-playgrounds.mdx`)
-            storybookFiles.push(storiesFile)
-            fs.writeFileSync(storiesFile, storiesContent)
-          }
-
-          const pageContent = componentPageTemplate({
-            kind,
-            stories,
-            component,
-            kindSlug,
-            storybookContentsRenderer,
-            storybookContentsImportsRenderer
+            fs.writeFileSync(storiesFile, storiesContent.template)
           })
-
-          const pageFile = path.join(paths.temp, `${kindSlug}-page.mdx`)
-          storybookFiles.push(pageFile)
-          return fs.writeFileSync(pageFile, pageContent)
         })
       }
 
