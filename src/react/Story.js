@@ -7,15 +7,13 @@ import { _clientAPI } from '../shim'
 export default class Story extends Component {
   static propTypes = {
     kind: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    usageInstructions: PropTypes.node
+    name: PropTypes.string.isRequired
   }
 
   render() {
     const {
       kind,
       name,
-      usageInstructions,
       ...rest
     } = this.props
 
@@ -28,17 +26,7 @@ export default class Story extends Component {
       )
     }
 
-    if (usageInstructions) {
-      const UsageInstructions = usageInstructions
-      return (
-        <React.Fragment>
-          <StoryWrapper {...rest}>{story()}</StoryWrapper>
-          <UsageInstructions />
-        </React.Fragment>
-      )
-    }
-
     // TODO: should we show the kind or name?
-    return <StoryWrapper {...rest}>{story()}</StoryWrapper>
+    return <StoryWrapper kind={kind} name={name} {...rest}>{story()}</StoryWrapper>
   }
 }

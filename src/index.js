@@ -14,7 +14,7 @@ const v3StorybookSemver = '^3'
 const v4StorybookSemver = '^4'
 
 const ensureArray = (value) => {
-  if (value instanceof Array) return value
+  if (Array.isArray(value)) return value
 
   return [value]
 }
