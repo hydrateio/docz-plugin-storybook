@@ -1,5 +1,8 @@
 const { storybook } = require('docz-plugin-storybook')
+const { createPlugin } = require('docz-core')
 
 module.exports = {
-  plugins: [storybook()]
+  indexHtml: null,
+  wrapper: undefined,
+  plugins: [storybook(createPlugin)]
 }
