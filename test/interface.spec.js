@@ -1,8 +1,9 @@
 import { storybook } from '../src'
+import { createPlugin } from 'docz-core'
 import path from 'path'
 
 test('docz-storybook-plugin interface', () => {
-  const plugin = storybook({
+  const plugin = storybook(createPlugin, {
     storybookVersion: '4.0.4'
   })
   expect(typeof plugin.modifyBundlerConfig).toBe('function')

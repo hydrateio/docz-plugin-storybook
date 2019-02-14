@@ -20,9 +20,16 @@
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@storybook/react": "^4.0.0",
-    "docz": "^0.12.5",
+    "docz": "0.12.9",
+    "docz-theme-default": "0.12.9",
     "docz-plugin-storybook": "link:../..",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
+  },
+  "resolutions": {
+    "docz": "0.12.9",
+    "docz-core": "0.12.9",
+    "docz-theme-default": "0.12.9",
+    "docz-utils": "0.12.9"
   }
 }
