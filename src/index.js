@@ -13,6 +13,12 @@ const minStorybookSemver = '>=3'
 const v3StorybookSemver = '^3'
 const v4StorybookSemver = '^4'
 
+const ensureArray = (value) => {
+  if (Array.isArray(value)) return value
+
+  return [value]
+}
+
 export const storybook = (createPlugin, opts = {}) => {
   const {
     // these options are intended to mimic the storybook cli options
@@ -77,15 +83,21 @@ export const storybook = (createPlugin, opts = {}) => {
         stories.forEach((storyKind) => {
           const { kind, stories, component } = storyKind
           const kindSlug = slugify(kind)
-          const content = storiesOfTemplate({
-            kind,
-            stories,
-            component
-          })
+          const storiesContents = ensureArray(
+            storiesOfTemplate({
+              kind,
+              stories,
+              component,
+              kindSlug
+            })
+          )
 
-          const file = path.join(paths.temp, `${kindSlug}-storybook.mdx`)
-          storybookFiles.push(file)
-          return fs.writeFileSync(file, content)
+          storiesContents.forEach(storiesContent => {
+            const fileNameSuffix = storiesContent.fileNameSuffix ? storiesContent.fileNameSuffix : ''
+            const storiesFile = path.join(paths.temp, `${kindSlug}-storybook${fileNameSuffix}.mdx`)
+            storybookFiles.push(storiesFile)
+            fs.writeFileSync(storiesFile, storiesContent.template)
+          })
         })
       }
 

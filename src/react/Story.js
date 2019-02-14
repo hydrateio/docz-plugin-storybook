@@ -27,6 +27,6 @@ export default class Story extends Component {
     }
 
     // TODO: should we show the kind or name?
-    return <StoryWrapper {...rest}>{story()}</StoryWrapper>
+    return <StoryWrapper kind={kind} name={name} {...rest}>{story()}</StoryWrapper>
   }
 }
