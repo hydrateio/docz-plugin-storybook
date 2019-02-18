@@ -24,6 +24,7 @@ export const storybook = (createPlugin, opts = {}) => {
     // these options are intended to mimic the storybook cli options
     configDir = paths.storybook.configDir,
     staticDir,
+    outputDir = paths.temp,
     storiesOfTemplate = defaultStoriesOfTemplate,
     storyWrapper = './default-wrapper',
     storybookVersion = resolvePkgVersion('@storybook/react'),
@@ -79,7 +80,7 @@ export const storybook = (createPlugin, opts = {}) => {
           console.log('stories', JSON.stringify(stories, null, 2))
         }
 
-        fs.ensureDirSync(paths.temp)
+        fs.ensureDirSync(outputDir)
         stories.forEach((storyKind) => {
           const { kind, stories, component } = storyKind
           const kindSlug = slugify(kind)
@@ -94,7 +95,7 @@ export const storybook = (createPlugin, opts = {}) => {
 
           storiesContents.forEach(storiesContent => {
             const fileNameSuffix = storiesContent.fileNameSuffix ? storiesContent.fileNameSuffix : ''
-            const storiesFile = path.join(paths.temp, `${kindSlug}-storybook${fileNameSuffix}.mdx`)
+            const storiesFile = path.join(outputDir, `${kindSlug}-storybook${fileNameSuffix}.mdx`)
             storybookFiles.push(storiesFile)
             fs.writeFileSync(storiesFile, storiesContent.template)
           })
