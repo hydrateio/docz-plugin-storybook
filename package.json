@@ -1,6 +1,6 @@
 {
   "name": "docz-plugin-storybook",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Docz plugin that makes migrating from Storybook a breeze.",
   "author": "Hydrate <dev@hydrate.io> (https://hydrate.io)",
   "repository": "hydrateio/docz-plugin-storybook",
