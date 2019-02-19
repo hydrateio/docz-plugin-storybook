@@ -4,7 +4,7 @@ import koaStatic from 'koa-static'
 import semver from 'semver'
 import slugify from '@sindresorhus/slugify'
 
-// import buildStorybook from './build-storybook'
+import buildStorybook from './build-storybook'
 import resolvePkgVersion from './resolve-pkg-version'
 import paths from './paths'
 import defaultStoriesOfTemplate from './default-stories-of-template'
@@ -66,22 +66,21 @@ export const storybook = (createPlugin, opts = {}) => {
 
   return createPlugin({
     // TODO: making setConfig synchronous for now so we don't rely on our docz PR
-    setConfig: (config) => {
+    setConfig: async (config) => {
       if (autofill) {
         console.error(`Error: docz-plugin-storybook autofill is currently unsupported`)
         process.exit(1)
       }
 
-      // ? await buildStorybook({ configDir, staticDir })
-      // : stories
+      const resolvedStories = stories && stories.length ? stories : await buildStorybook({ configDir, staticDir: [staticDir] })
 
-      if (stories && stories.length) {
+      if (resolvedStories && resolvedStories.length) {
         if (debug) {
-          console.log('stories', JSON.stringify(stories, null, 2))
+          console.log('stories', JSON.stringify(resolvedStories, null, 2))
         }
 
         fs.ensureDirSync(outputDir)
-        stories.forEach((storyKind) => {
+        resolvedStories.forEach((storyKind) => {
           const { kind, stories, component } = storyKind
           const kindSlug = slugify(kind)
           const storiesContents = ensureArray(
