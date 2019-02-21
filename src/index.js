@@ -140,10 +140,10 @@ export const storybook = (createPlugin, opts = {}) => {
         test: /\.md$/,
         use: [
           {
-            loader: 'html-loader'
+            loader: require.resolve('html-loader')
           },
           {
-            loader: 'markdown-loader'
+            loader: require.resolve('markdown-loader')
           }
         ]
       })
@@ -166,7 +166,7 @@ export const storybook = (createPlugin, opts = {}) => {
     },
 
     onCreateApp: (app) => {
-      if (staticPath) {
+      if (app && app.use && staticPath) {
         app.use(koaStatic(staticPath))
       }
     },
