@@ -31,7 +31,7 @@ export default class ClientAPI {
     this._globalDecorators = []
   }
 
-  storiesOf = (kind, m) => {
+  storiesOf = (kind, m, componentParameters) => {
     if (!kind && typeof kind !== 'string') {
       throw new Error('Invalid or missing kind provided for stories, should be a string')
     }
@@ -86,7 +86,7 @@ export default class ClientAPI {
 
       const fileName = m ? m.id : null
 
-      const allParam = { fileName }
+      const allParam = { fileName, ...componentParameters, ...parameters }
 
       const paramScopes = [
         this._globalParameters,
@@ -137,9 +137,9 @@ export default class ClientAPI {
     return this._storyStore.getStoryKinds().map((kind) => {
       const fileName = this._storyStore.getStoryFileName(kind)
 
-      const stories = this._storyStore.getStories(kind).map((name) => {
-        const render = this._storyStore.getStoryWithContext(kind, name)
-        return { name, render }
+      const stories = this._storyStore.getStoriesWithParameters(kind).map((story) => {
+        const render = this._storyStore.getStoryWithContext(kind, story.name)
+        return { name: story.name, render, parameters: story.parameters }
       })
 
       return { kind, fileName, stories }

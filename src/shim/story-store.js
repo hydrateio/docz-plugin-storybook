@@ -55,6 +55,16 @@ export default class StoryStore {
       .map(info => info.name)
   }
 
+  getStoriesWithParameters(kind) {
+    if (!this._data[kind]) {
+      return []
+    }
+
+    return Object.keys(this._data[kind].stories)
+      .map(name => this._data[kind].stories[name])
+      .sort((info1, info2) => info1.index - info2.index)
+  }
+
   getStoryFileName(kind) {
     const storiesKind = this._data[kind]
     if (!storiesKind) {
