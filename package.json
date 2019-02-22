@@ -30,7 +30,9 @@
     "test": "yarn run lint && jest && yarn build:examples"
   },
   "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
+    "babel-core": "7.0.0-bridge.0",
+    "//": "Remove merge resolution if upgrading Jest",
+    "merge": "1.2.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.1",
