@@ -30,7 +30,8 @@ export const storybook = (createPlugin, opts = {}) => {
     storybookVersion = resolvePkgVersion('@storybook/react'),
     autofill = false,
     debug = false,
-    stories
+    stories,
+    storiesOfMapper = (storiesOf) => storiesOf
   } = opts
 
   if (!storybookVersion) {
@@ -83,7 +84,8 @@ export const storybook = (createPlugin, opts = {}) => {
 
         fs.ensureDirSync(outputDir)
         resolvedStories.forEach((storyKind) => {
-          const { kind, stories, component } = storyKind
+          const mappedStoriesOf = storiesOfMapper(storyKind)
+          const { kind, stories, component } = mappedStoriesOf
           const kindSlug = slugify(kind)
           const storiesContents = ensureArray(
             storiesOfTemplate({
