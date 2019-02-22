@@ -65,14 +65,16 @@ export const storybook = (createPlugin, opts = {}) => {
   }
 
   return createPlugin({
-    // TODO: making setConfig synchronous for now so we don't rely on our docz PR
     setConfig: async (config) => {
       if (autofill) {
         console.error(`Error: docz-plugin-storybook autofill is currently unsupported`)
         process.exit(1)
       }
 
-      const resolvedStories = stories && stories.length ? stories : await buildStorybook({ configDir, staticDir: [staticDir] })
+      const resolvedStories =
+        stories && stories.length
+          ? stories
+          : await buildStorybook(Object.assign({ configDir }, staticDir ? { staticDir: [staticDir] } : {}))
 
       if (resolvedStories && resolvedStories.length) {
         if (debug) {

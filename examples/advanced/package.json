@@ -21,8 +21,8 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@storybook/react": "^3.4.11",
     "babel-core": "^6.26.3",
-    "docz": "0.12.9",
-    "docz-theme-default": "0.12.9",
+    "docz": "0.12.14",
+    "docz-theme-default": "0.12.14",
     "docz-plugin-storybook": "link:../..",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -33,9 +33,9 @@
     "styled-components": "^4.0.3"
   },
   "resolutions": {
-    "docz": "0.12.9",
-    "docz-core": "0.12.9",
-    "docz-theme-default": "0.12.9",
-    "docz-utils": "0.12.9"
+    "docz": "0.12.14",
+    "docz-core": "0.12.14",
+    "docz-theme-default": "0.12.14",
+    "docz-utils": "0.12.14"
   }
 }

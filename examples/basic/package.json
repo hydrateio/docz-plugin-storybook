@@ -19,17 +19,20 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "@storybook/react": "^4.0.0",
-    "docz": "0.12.9",
-    "docz-theme-default": "0.12.9",
+    "babel-loader": "7",
+    "docz": "0.12.14",
     "docz-plugin-storybook": "link:../..",
+    "docz-theme-default": "0.12.14",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
   "resolutions": {
-    "docz": "0.12.9",
-    "docz-core": "0.12.9",
-    "docz-theme-default": "0.12.9",
-    "docz-utils": "0.12.9"
+    "docz": "0.12.14",
+    "docz-core": "0.12.14",
+    "docz-theme-default": "0.12.14",
+    "docz-utils": "0.12.14"
   }
 }
