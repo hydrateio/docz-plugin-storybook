@@ -6,6 +6,8 @@ import pRetry from 'p-retry'
 import puppeteer from 'puppeteer'
 import readPkgUp from 'read-pkg-up'
 import tempy from 'tempy'
+import path from 'path'
+import fs from 'fs'
 
 module.exports = async (opts = { }) => {
   // build storybook standalone with custom webpack config
@@ -33,9 +35,13 @@ module.exports = async (opts = { }) => {
   // serve static bundle
   // -------------------
 
+  const doesSbFilesExistInTempDir = fs.existsSync(path.join(outputDir, 'index.html'))
+
+  const publicPath = doesSbFilesExistInTempDir ? outputDir : path.join(process.cwd(), outputDir)
+
   const server = http.createServer((request, response) => {
     return handler(request, response, {
-      public: outputDir
+      public: publicPath
     })
   })
 
@@ -54,11 +60,19 @@ module.exports = async (opts = { }) => {
   const page = await browser.newPage()
 
   await page.goto(`${baseUrl}/iframe.html`)
-  const storybook = await pRetry(() => page.evaluate(() => {
-    const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
 
-    return window[globalHook].getStorybook()
-  }))
+  const storybook = await pRetry(() => {
+    return page.evaluate(() => {
+      const globalHook = '__DOCZ_PLUGIN_STORYBOOK_CLIENT_API__'
+
+      return window[globalHook].getStorybook()
+    })
+  }, {
+    onFailedAttempt: error => {
+      console.log(`Attempt to retrieve storybook info #${error.attemptNumber} failed. There are ${error.retriesLeft} retries left.`)
+    },
+    retries: 10
+  })
 
   await Promise.all([
     browser.close(),
