@@ -56,6 +56,96 @@ export default {
 
 3. ~~Start docz and view all your existing stories that've been automatically imported -- complete with all the hot reloading and mdx goodness that makes Docz so great!~~ Once [#7](https://github.com/hydrateio/docz-plugin-storybook/issues/7) is resolved, all of your stories will automatically be populated within Docz. Until then, you'll need to manually render your stories within mdx files as the next section explains.
 
+### Storybook 3 Support
+
+At the moment docz-plugin-storybook cannot automatically import your stories from Storybook 3, so if you are using Storybook 3 you will need to supply a JSON array with your story metadata to the plugin.
+
+```js
+// doczrc.js
+import { storybook } from 'docz-plugin-storybook'
+import stories from './stories.json'
+import { createPlugin } from 'docz-core'
+
+export default {
+  plugins: [
+    storybook(createPlugin, { stories })
+  ]
+}
+```
+
+```json
+[
+  {
+    "kind": "Series/AreaSeries/Base",
+    "fileName": "./storybook/areaseries-story.js",
+    "stories": [
+      {
+        "name": "Single Area chart",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "Single Area chart paired with LineSeries",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "With negative numbers",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "With non-uniform x numbers",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "Multiple Area series",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "Multiple stacked Area series",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/AreaSeries/Styling",
+    "fileName": "./storybook/areaseries-story.js",
+    "stories": [
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "style object",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      }
+    ]
+  }
+]
+```
+
+This will cause the plugin to skip running Storybook and just build docz with the provided stories.
+
 #### Manual Rendering
 
 <!--
