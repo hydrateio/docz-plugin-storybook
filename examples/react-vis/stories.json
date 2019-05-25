@@ -1,0 +1,518 @@
+[
+  {
+    "kind": "Series/AreaSeries/Base",
+    "fileName": "./storybook/areaseries-story.js",
+    "stories": [
+      {
+        "name": "Single Area chart",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "Single Area chart paired with LineSeries",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "With negative numbers",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "With non-uniform x numbers",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "Multiple Area series",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "Multiple stacked Area series",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/AreaSeries/Styling",
+    "fileName": "./storybook/areaseries-story.js",
+    "stories": [
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      },
+      {
+        "name": "style object",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/AreaSeries/Curve",
+    "fileName": "./storybook/areaseries-story.js",
+    "stories": [
+      {
+        "name": "Curve",
+                "parameters": {
+          "fileName": "./storybook/areaseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/VerticalBarSeries/Base",
+    "fileName": "./storybook/barseries-story.js",
+    "stories": [
+      {
+        "name": "single VerticalBarSeries",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "multiple VerticalBarSeries - clustered",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "multiple VerticalBarSeries - stacked",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/VerticalBarSeries/Styling/By datapoint",
+    "fileName": "./storybook/barseries-story.js",
+    "stories": [
+      {
+        "name": "color",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/VerticalBarSeries/Styling/At series level",
+    "fileName": "./storybook/barseries-story.js",
+    "stories": [
+      {
+        "name": "fill",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "style",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/HorizontalBarSeries/Base",
+    "fileName": "./storybook/barseries-story.js",
+    "stories": [
+      {
+        "name": "single HorizontalBarSeries",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "multiple HorizontalBarSeries - clustered",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "multiple HorizontalBarSeries - stacked",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/HorizontalBarSeries/Styling/By datapoint",
+    "fileName": "./storybook/barseries-story.js",
+    "stories": [
+      {
+        "name": "color",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/HorizontalBarSeries/Styling/At series level",
+    "fileName": "./storybook/barseries-story.js",
+    "stories": [
+      {
+        "name": "fill",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      },
+      {
+        "name": "style",
+                "parameters": {
+          "fileName": "./storybook/barseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/LineSeries/Base",
+    "fileName": "./storybook/lineseries-story.js",
+    "stories": [
+      {
+        "name": "Single Line chart",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "With negative numbers",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "With non-uniform x numbers",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "Multiple Line series",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/LineSeries/Styling",
+    "fileName": "./storybook/lineseries-story.js",
+    "stories": [
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "strokeDasharray",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "strokeStyle",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "strokeWidth",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      },
+      {
+        "name": "style object",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/LineSeries/Curve",
+    "fileName": "./storybook/lineseries-story.js",
+    "stories": [
+      {
+        "name": "Curve",
+                "parameters": {
+          "fileName": "./storybook/lineseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/MarkSeries/Base",
+    "fileName": "./storybook/markseries-story.js",
+    "stories": [
+      {
+        "name": "Single scatterplot",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "Multiple MarkSeries",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/MarkSeries/Styling/By Datapoint",
+    "fileName": "./storybook/markseries-story.js",
+    "stories": [
+      {
+        "name": "color",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "fill",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "size",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/MarkSeries/Styling/At series level",
+    "fileName": "./storybook/markseries-story.js",
+    "stories": [
+      {
+        "name": "fill",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "opacity",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "stroke",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "strokeWidth",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      },
+      {
+        "name": "style",
+                "parameters": {
+          "fileName": "./storybook/markseries-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Series/RadialCharts/Pie Chart",
+    "fileName": "./storybook/radial-story.js",
+    "stories": [
+      {
+        "name": "Single Pie Chart",
+                "parameters": {
+          "fileName": "./storybook/radial-story.js"
+        }
+      },
+      {
+        "name": "Single Pie Chart with Labels",
+                "parameters": {
+          "fileName": "./storybook/radial-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Axes and scales/Axis Formatting/Base",
+    "fileName": "./storybook/axis-story.js",
+    "stories": [
+      {
+        "name": "Axis orientation",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "Axis titles",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "Tick total",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "Tick Size",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "Tick Size (Inner)",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "Tick Size (Outer)",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "Tick orientation",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Axes and scales/Scales",
+    "fileName": "./storybook/axis-story.js",
+    "stories": [
+      {
+        "name": "time Scale",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "category scale",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      },
+      {
+        "name": "ordinal scale",
+                "parameters": {
+          "fileName": "./storybook/axis-story.js"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "Legends",
+    "fileName": "./storybook/legend-story.js",
+    "stories": [
+      {
+        "name": "Discrete color legend",
+                "parameters": {
+          "fileName": "./storybook/legend-story.js"
+        }
+      },
+      {
+        "name": "Searchable discrete color legend",
+                "parameters": {
+          "fileName": "./storybook/legend-story.js"
+        }
+      },
+      {
+        "name": "Continuous Color Legend",
+                "parameters": {
+          "fileName": "./storybook/legend-story.js"
+        }
+      },
+      {
+        "name": "Continuous Size Legend",
+                "parameters": {
+          "fileName": "./storybook/legend-story.js"
+        }
+      }
+    ]
+  }
+]

@@ -4,7 +4,6 @@ import koaStatic from 'koa-static'
 import semver from 'semver'
 import slugify from '@sindresorhus/slugify'
 
-import buildStorybook from './build-storybook'
 import resolvePkgVersion from './resolve-pkg-version'
 import paths from './paths'
 import defaultStoriesOfTemplate from './default-stories-of-template'
@@ -12,6 +11,11 @@ import defaultStoriesOfTemplate from './default-stories-of-template'
 const minStorybookSemver = '>=3'
 const v3StorybookSemver = '^3'
 const v4StorybookSemver = '^4'
+
+const performStorybookBuild = async (config) => {
+  const buildStorybook = require('./build-storybook')
+  return buildStorybook(config)
+}
 
 const ensureArray = (value) => {
   if (Array.isArray(value)) return value
@@ -52,6 +56,11 @@ export const storybook = (createPlugin, opts = {}) => {
     process.exit(1)
   }
 
+  if (isStorybookV3 && !isStorybookV4 && !stories) {
+    console.error(`[docz-plugin-storybook] Storybook version v${storybookVersion} does not support dynamically collecting story information from Storybook.  Please pass an array of story metadata to the stories configuration object on the plugin.`)
+    process.exit(1)
+  }
+
   const staticPath = staticDir && path.resolve(staticDir)
   if (staticPath && !fs.existsSync(staticPath)) {
     console.error(`Error: no such directory to load static files: ${staticPath}`)
@@ -75,7 +84,7 @@ export const storybook = (createPlugin, opts = {}) => {
       const resolvedStories =
         stories && stories.length
           ? stories
-          : await buildStorybook(Object.assign({ configDir }, staticDir ? { staticDir: [staticDir] } : {}))
+          : await performStorybookBuild(Object.assign({ configDir }, staticDir ? { staticDir: [staticDir] } : {}))
 
       if (resolvedStories && resolvedStories.length) {
         if (debug) {
